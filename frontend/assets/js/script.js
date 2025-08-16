@@ -2,10 +2,21 @@
 window.addEventListener('load', function() {
     const loader = document.getElementById('loader');
     const mainContent = document.getElementById('main-content');
+    const typingTextElement = document.getElementById('typing-text');
+    const textToType = "SISTEMA WEB PARA GERENCIAMENTO DE CARDÁPIO";
+    const typingSpeed = 100;
 
-    // Simula um tempo de carregamento (ex: 3 segundos)
-    setTimeout(function() {
-        loader.style.display = 'none'; // Esconde a tela de carregamento
-        mainContent.classList.remove('hidden'); // Mostra a tela de login
-    }, 3000); // 3000 milissegundos = 3 segundos
+    function typeWriter(text, i) {
+        if (i < text.length) {
+            typingTextElement.innerHTML += text.charAt(i);
+            setTimeout(() => typeWriter(text, i + 1), typingSpeed);
+        } else {
+            setTimeout(() => {
+                loader.style.display = 'none';
+                mainContent.classList.remove('hidden');
+            }, 1000);
+        }
+    }
+
+    typeWriter(textToType, 0);
 });

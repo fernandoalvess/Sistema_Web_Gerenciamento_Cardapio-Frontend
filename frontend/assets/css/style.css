@@ -31,10 +31,34 @@ body {
     color: #FFC72C;
 }
 
-.loader-content h1 {
+/* .loader-content h1 {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 30px;
+} */
+
+/* Efeite de digitação */
+#typing-text {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+#typing-text::after{
+    content: '|';
+    position: absolute;
+    right: -15px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 .spinner {
