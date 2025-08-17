@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <div class="usuarios-container">
+    <div class="dashboard-container">
         <aside class="sidebar">
             <div class="sidebar-header">
                 </div>
@@ -62,7 +62,7 @@
                             <button class="delete-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" id="Trash-2--Streamline-Lucide" height="24" width="24">
                                 <desc>
-                                    Trash 2 Streamline Icon: https://streamlinehq.com
+                                    Lixeira
                                 </desc>
                                 <path d="M3 6h18" stroke-width="2"></path>
                                 <path d="M19 6v14c0 1 -1 2 -2 2H7c-1 0 -2 -1 -2 -2V6" stroke-width="2"></path>
@@ -81,7 +81,7 @@
                             <button class="delete-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" id="Trash-2--Streamline-Lucide" height="24" width="24">
                                 <desc>
-                                    Trash 2 Streamline Icon: https://streamlinehq.com
+                                    Lixeira
                                 </desc>
                                 <path d="M3 6h18" stroke-width="2"></path>
                                 <path d="M19 6v14c0 1 -1 2 -2 2H7c-1 0 -2 -1 -2 -2V6" stroke-width="2"></path>
@@ -100,6 +100,49 @@
             </div>
         </main>
     </div>
+    </main>
+    </div>
 
+    <div id="add-user-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2>Cadastrar usuário</h2>
+            <form id="add-user-form">
+                <div class="input-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" placeholder="Digite o nome completo" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="exemplo@email.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" placeholder="exemplo: (99) 99999-9999" required>
+                </div>
+                <div class="input-group">
+                    <label for="senha">Senha Temporária</label>
+                    <input type="text" id="senha" placeholder="exemplo: Chef#321" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+                    <button type="submit" class="button-primary">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="delete-user-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2>Remover usuário</h2>
+            <p>Deseja mesmo realizar esta operação? Ela é irreversível!</p>
+            <div class="modal-actions">
+                <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+                <button type="button" class="button-danger">Remover</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../assets/js/admin-usuarios.js"></script>
 </body>
 </html>
