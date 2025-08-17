@@ -1,4 +1,6 @@
-/* Reset e Configurações Globais */
+/* ---------------------------------- */
+/*    RESET E CONFIGURAÇÕES GLOBAIS   */
+/* ---------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -10,4 +12,72 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    background-color: #F7F7F7;
+    color: #3F3F3F;
+}
+
+/* ---------------------------------- */
+/*    CLASSES UTILITÁRIAS             */
+/* ---------------------------------- */
+
+/* Para esconder/mostrar elementos com JS */
+.hidden {
+    display: none !important;
+}
+
+/* Para pesos de fonte */
+.fw-regular { font-weight: 400; }
+.fw-medium { font-weight: 500; }
+.fw-semibold { font-weight: 600; }
+.fw-bold { font-weight: 700; }
+.fw-extrabold { font-weight: 800; }
+
+
+/* ---------------------------------- */
+/*    COMPONENTES REUTILIZÁVEIS       */
+/* ---------------------------------- */
+
+/* Botão Primário */
+.button-primary {
+    background-color: #EB2933;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+    background-color: #c62828;
+}
+
+/* Botão Secundário (em texto) */
+.button-secondary {
+    background: none;
+    border: none;
+    color: #EB2933;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+/* Botão de Perigo (usado no modal) */
+.button-danger {
+    background-color: #EB2933;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-danger:hover {
+    background-color: #c62828;
 }

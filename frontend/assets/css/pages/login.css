@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #EA1D2C;
+    background-color: #EB2933;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +69,7 @@
 
 .info-panel {
     flex-basis: 50%;
-    background-color: #EA1D2C;
+    background-color: #EB2933;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,20 +130,20 @@
 
 .input-group input:focus {
     outline: none;
-    border-color: #EA1D2C;
+    border-color: #EB2933;
 }
 
 .forgot-password {
     text-align: right;
     margin-bottom: 24px;
-    color: #EA1D2C; 
+    color: #EB2933; 
     text-decoration: none;
     font-size: 14px;
     font-weight: 400;
 }
 
 .login-button {
-    background-color: #EA1D2C; 
+    background-color: #EB2933; 
     color: #FFFFFF; 
     border: none;
     padding: 14px;
