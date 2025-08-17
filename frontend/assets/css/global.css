@@ -1,6 +1,4 @@
-/* ---------------------------------- */
-/*    RESET E CONFIGURAÇÕES GLOBAIS   */
-/* ---------------------------------- */
+/* RESET E CONFIGURAÇÕES GLOBAIS  */
 * {
     margin: 0;
     padding: 0;
@@ -13,31 +11,21 @@ body {
     width: 100vw;
     overflow: hidden;
     background-color: #F7F7F7;
-    color: #3F3F3F;
+    color: #000000;
 }
 
-/* ---------------------------------- */
-/*    CLASSES UTILITÁRIAS             */
-/* ---------------------------------- */
-
-/* Para esconder/mostrar elementos com JS */
+/* CLASSES UTILITÁRIAS  */
 .hidden {
     display: none !important;
 }
-
-/* Para pesos de fonte */
 .fw-regular { font-weight: 400; }
 .fw-medium { font-weight: 500; }
 .fw-semibold { font-weight: 600; }
 .fw-bold { font-weight: 700; }
 .fw-extrabold { font-weight: 800; }
 
-
-/* ---------------------------------- */
-/*    COMPONENTES REUTILIZÁVEIS       */
-/* ---------------------------------- */
-
-/* Botão Primário */
+/* COMPONENTES REUTILIZÁVEIS       */
+/*  Botões  */
 .button-primary {
     background-color: #EB2933;
     color: #FFFFFF;
@@ -54,7 +42,6 @@ body {
     background-color: #c62828;
 }
 
-/* Botão Secundário (em texto) */
 .button-secondary {
     background: none;
     border: none;
@@ -65,7 +52,6 @@ body {
     cursor: pointer;
 }
 
-/* Botão de Perigo (usado no modal) */
 .button-danger {
     background-color: #EB2933;
     color: #FFFFFF;
@@ -80,4 +66,49 @@ body {
 
 .button-danger:hover {
     background-color: #c62828;
+}
+
+/*  Formulários  */
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #000000;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #3F3F3F;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #EB2933;
+}
+
+/*  Componente de Senha Visível/Oculta  */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 40px; 
+}
+
+.password-wrapper #toggle-password {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    width: 20px;
 }
