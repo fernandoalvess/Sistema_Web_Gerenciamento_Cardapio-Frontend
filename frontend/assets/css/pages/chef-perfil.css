@@ -56,5 +56,5 @@
 
 .profile-header .button-primary img {
     width: 16px;
-    filter: brightness(0) invert(1); /* Deixa o ícone branco */
+    filter: brightness(0) invert(1);
 }
