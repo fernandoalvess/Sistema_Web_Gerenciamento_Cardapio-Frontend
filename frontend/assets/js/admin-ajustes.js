@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Elementos do Modal de ALTERAR SENHA 
     const changePasswordModal = document.getElementById('change-password-modal');
     const openChangePasswordBtn = document.getElementById('open-change-password-modal');
+
+    // Elementos do Modal de DELETAR CONTA
+    const deleteAccountModal = document.getElementById('delete-account-modal');
+    const openDeleteAccountBtn = document.getElementById('open-delete-account-modal');
+    const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+
+    // Elementos para FECHAR os modais
     const closeModalBtns = document.querySelectorAll('[data-close-modal]');
 
     function openModal(modal) {
@@ -10,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function closeModal(modal) {
         if (modal) modal.classList.add('hidden');
     }
-
+    
+    // Abre o modal de ALTERAR SENHA
     if (openChangePasswordBtn) {
         openChangePasswordBtn.addEventListener('click', function(event) {
             event.preventDefault(); 
@@ -18,6 +27,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Abre o modal de DELETAR CONTA
+    if (openDeleteAccountBtn) {
+        openDeleteAccountBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            openModal(deleteAccountModal);
+        });
+    }
+
+    // Fecha qualquer modal ao clicar no botão de cancelar
     closeModalBtns.forEach(button => {
         button.addEventListener('click', function() {
             const modal = this.closest('.modal-overlay');
@@ -25,14 +43,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    if (changePasswordModal) {
-        changePasswordModal.addEventListener('click', function(event) {
-            if (event.target === this) {
-                closeModal(this);
-            }
-        });
-    }
+    // Fecha qualquer modal se o usuário clicar fora
+    [changePasswordModal, deleteAccountModal].forEach(modal => {
+        if (modal) {
+            modal.addEventListener('click', function(event) {
+                if (event.target === this) {
+                    closeModal(this);
+                }
+            });
+        }
+    });
 
+    // Mostrar/Esconder a senha
     const togglePasswordIcons = document.querySelectorAll('.toggle-password');
 
     togglePasswordIcons.forEach(icon => {
@@ -49,5 +71,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Ação de deletar a conta (simulação)
+    if (confirmDeleteBtn) {
+        confirmDeleteBtn.addEventListener('click', function() {
+            alert('Conta deletada (simulação)! Enviando requisição para o backend...');
+            closeModal(deleteAccountModal);
+        });
+    }
 
 });
