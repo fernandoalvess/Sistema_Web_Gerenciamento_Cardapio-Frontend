@@ -1,0 +1,58 @@
+.welcome-header {
+    margin-bottom: 32px;
+}
+
+.welcome-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #000000;
+}
+
+.actions-container {
+    display: flex;
+    gap: 32px;
+}
+
+.action-card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+        align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    gap: 16px; 
+}
+
+.action-card h2 {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 0; 
+}
+
+.action-card p {
+    color: #3F3F3F;
+    font-size: 16px;
+    margin-bottom: 0; 
+    flex-grow: 0; 
+}
+
+.action-card .button-primary,
+.action-card .button-yellow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: auto; 
+}
+
+.action-card button img {
+    width: 18px;
+}
+
+.action-card .button-primary img {
+    filter: brightness(0) invert(1);
+}

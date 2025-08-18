@@ -68,6 +68,23 @@ body {
     background-color: #c62828;
 }
 
+/* Botão amarelo */
+.button-yellow {
+    background-color: #FFC72C; 
+    color: #000000; 
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-yellow:hover {
+    background-color: #fcae1e;
+}
+
 /*  Formulários  */
 .input-group {
     margin-bottom: 16px;
