@@ -46,7 +46,7 @@
                         <h1>Perfil</h1>
                         <p>Olá, Sr. Fernando!</p>
                     </div>
-                    <button class="button-primary">
+                    <button class="button-primary" id="open-edit-profile-btn">
                         <img src="../../assets/images/icons/edit.svg" alt="Ícone de editar">
                         Editar Perfil
                     </button>
@@ -69,7 +69,32 @@
             </div>
         </main>
     </div>
+
+    <div id="edit-profile-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2 class="fw-extrabold">Editar perfil</h2>
+            <form id="edit-profile-form">
+                <div class="input-group">
+                    <label for="edit-nome">Nome</label>
+                    <input type="text" id="edit-nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="edit-email">Email</label>
+                    <input type="email" id="edit-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="edit-telefone">Telefone</label>
+                    <input type="tel" id="edit-telefone" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+                    <button type="submit" class="button-primary">Atualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
     
     <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/chef-perfil.js"></script>
 </body>
 </html>
