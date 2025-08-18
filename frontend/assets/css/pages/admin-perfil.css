@@ -43,3 +43,7 @@
     font-weight: 500;
     color: #3F3F3F;
 }
+
+.hidden {
+    display: none;
+}
