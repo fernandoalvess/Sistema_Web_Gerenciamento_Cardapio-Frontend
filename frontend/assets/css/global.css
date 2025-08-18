@@ -168,3 +168,45 @@ body {
     padding: 40px;
     overflow-y: auto;
 }
+
+/*  ESTILOS DOS MODAIS  */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+.modal-content {
+    background-color: #FFFFFF;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+}
+
+.modal-content h2 {
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #000000;
+}
+
+.modal-content p {
+    margin-bottom: 24px;
+    font-size: 16px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 32px;
+}
