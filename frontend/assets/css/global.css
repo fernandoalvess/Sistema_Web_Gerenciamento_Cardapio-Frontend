@@ -106,11 +106,13 @@ body {
     padding-right: 40px; 
 }
 
-.password-wrapper #toggle-password {
+.password-wrapper .toggle-password {
     position: absolute;
     right: 15px;
     cursor: pointer;
     width: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Navbar */
