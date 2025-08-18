@@ -1,0 +1,60 @@
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 40px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #3F3F3F80; 
+}
+
+.profile-info h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 4px;
+}
+
+.profile-info p {
+    font-size: 16px;
+    color: #3F3F3f;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+}
+
+.detail-item {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3F3F3F80;
+}
+
+.detail-item label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000; 
+    margin-bottom: 8px;
+}
+
+.detail-item .value {
+    font-size: 16px;
+    font-weight: 500;
+    color: #3F3F3F;
+}
+
+.hidden {
+    display: none;
+}
+
+.profile-header .button-primary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile-header .button-primary img {
+    width: 16px;
+    filter: brightness(0) invert(1); /* Deixa o ícone branco */
+}
