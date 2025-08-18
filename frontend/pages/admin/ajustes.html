@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li class="settings-item">
-                        <a href="#">
+                        <a href="#" id="open-delete-account-modal">
                             <span>Deletar Conta e Dados</span>
                             <img src="../../assets/images/icons/chevron-right.svg" alt="Ir para">
                         </a>
@@ -94,6 +94,17 @@
                 <button type="submit" class="button-primary">Atualizar</button>
             </div>
         </form>
+    </div>
+    </div>
+
+    <div id="delete-account-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <h2 class="fw-extrabold">Deletar conta</h2>
+        <p>Deseja mesmo realizar esta operação? Ela é irreversível!</p>
+        <div class="modal-actions">
+            <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+            <button type="button" id="confirm-delete-btn" class="button-danger">Confirmar</button>
+        </div>
     </div>
     </div>
 
