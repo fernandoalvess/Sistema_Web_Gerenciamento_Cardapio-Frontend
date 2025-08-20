@@ -1,16 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Elementos do Modal de ALTERAR SENHA 
     const changePasswordModal = document.getElementById('change-password-modal');
-    const openChangePasswordBtn = document.getElementById('open-change-password-modal');
-
-    // Elementos do Modal de DELETAR CONTA
     const deleteAccountModal = document.getElementById('delete-account-modal');
-    const openDeleteAccountBtn = document.getElementById('open-delete-account-modal');
+    const successNoticeModal = document.getElementById('success-notice-modal'); 
+    const openChangePasswordBtn = document.querySelector('[data-modal-target="change-password-modal"]');
+    const openDeleteAccountBtn = document.querySelector('[data-modal-target="delete-account-modal"]');
     const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
 
-    // Elementos para FECHAR os modais
-    const closeModalBtns = document.querySelectorAll('[data-close-modal]');
-
+    // Lógica de Abrir/Fechar 
     function openModal(modal) {
         if (modal) modal.classList.remove('hidden');
     }
@@ -18,66 +14,37 @@ document.addEventListener('DOMContentLoaded', function() {
     function closeModal(modal) {
         if (modal) modal.classList.add('hidden');
     }
-    
-    // Abre o modal de ALTERAR SENHA
-    if (openChangePasswordBtn) {
-        openChangePasswordBtn.addEventListener('click', function(event) {
-            event.preventDefault(); 
-            openModal(changePasswordModal);
-        });
-    }
 
-    // Abre o modal de DELETAR CONTA
-    if (openDeleteAccountBtn) {
-        openDeleteAccountBtn.addEventListener('click', function(event) {
-            event.preventDefault();
-            openModal(deleteAccountModal);
-        });
-    }
+    // Lógica da exclusão 
 
-    // Fecha qualquer modal ao clicar no botão de cancelar
-    closeModalBtns.forEach(button => {
-        button.addEventListener('click', function() {
-            const modal = this.closest('.modal-overlay');
-            closeModal(modal);
-        });
-    });
-
-    // Fecha qualquer modal se o usuário clicar fora
-    [changePasswordModal, deleteAccountModal].forEach(modal => {
-        if (modal) {
-            modal.addEventListener('click', function(event) {
-                if (event.target === this) {
-                    closeModal(this);
-                }
-            });
-        }
-    });
-
-    // Mostrar/Esconder a senha
-    const togglePasswordIcons = document.querySelectorAll('.toggle-password');
-
-    togglePasswordIcons.forEach(icon => {
-        icon.addEventListener('click', function() {
-            const input = this.previousElementSibling;
-            
-            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-            input.setAttribute('type', type);
-
-            if (type === 'password') {
-                this.src = '../../assets/images/icons/eye-off.svg';
-            } else {
-                this.src = '../../assets/images/icons/eye-on.svg';
-            }
-        });
-    });
-
-    // Ação de deletar a conta (simulação)
+    // "Confirmar" no primeiro modal para deletar a contaa
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', function() {
-            alert('Conta deletada (simulação)! Enviando requisição para o backend...');
             closeModal(deleteAccountModal);
+            
+            console.log('Solicitação de exclusão enviada para o backend...');
+            
+            // Abre o modal de aviso
+            openModal(successNoticeModal);
         });
     }
 
+    // fechamento do segundo modal (Aviso)
+    if (successNoticeModal) {
+        const closeNoticeTriggers = successNoticeModal.querySelectorAll('[data-close-modal], .close-modal-btn');
+        
+        closeNoticeTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                closeModal(successNoticeModal);
+                window.location.href = '../../index.html';
+            });
+        });
+
+        successNoticeModal.addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal(successNoticeModal);
+                window.location.href = '../../index.html';
+            }
+        });
+    }
 });
