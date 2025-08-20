@@ -45,7 +45,7 @@
                     <img src="../../assets/images/icons/search.svg" alt="Ícone de busca">
                     <input type="text" placeholder="Pesquisar pelo nome">
                 </div>
-                <button class="button-primary" data-modal-target="create-dish-modal">Criar Prato</button>
+                <button class="button-primary" id="open-create-dish-modal" data-modal-target="dish-form-modal">Criar Prato</button>
             </header>
 
             <div class="dishes-grid">
@@ -53,8 +53,12 @@
                     <div class="dish-card-header">
                         <span class="tag-category tag-entrada">Entrada</span>
                         <div class="card-actions">
-                            <button class="icon-btn"><img src="../../assets/images/icons/edit.svg" alt="Editar"></button>
-                            <button class="icon-btn"><img src="../../assets/images/icons/trash.svg" alt="Deletar"></button>
+                            <button class="icon-btn edit-btn" data-dish-id="1" data-modal-target="dish-form-modal">
+                                <img src="../../assets/images/icons/edit.svg" alt="Editar">
+                            </button>
+                            <button class="icon-btn" data-modal-target="delete-dish-modal">
+                                <img src="../../assets/images/icons/trash.svg" alt="Deletar">
+                            </button>
                         </div>
                     </div>
                     <div class="dish-card-body">
@@ -70,7 +74,7 @@
                 <div class="dish-card">
                     <div class="dish-card-header">
                         <span class="tag-category tag-principal">Prato principal</span>
-                        </div>
+                    </div>
                     <div class="dish-card-body">
                         <h2>Risotto de Cogumelos</h2>
                         <p>Arroz arbóreo cremoso com cogumelos frescos e parmesão.</p>
@@ -80,51 +84,47 @@
                         <span class="created-by">Criado por João</span>
                     </div>
                 </div>
-
-                </div>
+            </div>
         </main>
     </div>
 
-    <div id="create-dish-modal" class="modal-overlay hidden">
-    <div class="modal-content">
-        <h2 class="fw-extrabold">Criar prato</h2>
-        <form id="create-dish-form">
-            <div class="input-group">
-                <label for="dish-name">Nome do prato</label>
-                <input type="text" id="dish-name" placeholder="Digite aqui o nome">
-            </div>
-
-            <div class="form-row">
+    <div id="dish-form-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2 class="fw-extrabold" id="dish-modal-title">Criar prato</h2>
+            <form id="dish-form">
                 <div class="input-group">
-                    <label for="dish-category">Categoria</label>
-                    <select id="dish-category">
-                        <option value="entrada">Entrada</option>
-                        <option value="prato-principal">Prato principal</option>
-                        <option value="sobremesa">Sobremesa</option>
-                    </select>
+                    <label for="dish-name">Nome do prato</label>
+                    <input type="text" id="dish-name" placeholder="Digite aqui o nome">
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="dish-category">Categoria</label>
+                        <select id="dish-category">
+                            <option value="entrada">Entrada</option>
+                            <option value="prato-principal">Prato principal</option>
+                            <option value="sobremesa">Sobremesa</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="dish-sharing">Compartilhamento</label>
+                        <select id="dish-sharing">
+                            <option value="publico">Público</option>
+                            <option value="privado">Privado</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="input-group">
-                    <label for="dish-sharing">Compartilhamento</label>
-                    <select id="dish-sharing">
-                        <option value="publico">Público</option>
-                        <option value="privado">Privado</option>
-                    </select>
+                    <label for="dish-description">Descrição</label>
+                    <textarea id="dish-description" rows="4" placeholder="Escreva uma descrição sobre o prato..."></textarea>
                 </div>
-            </div>
-
-            <div class="input-group">
-                <label for="dish-description">Descrição</label>
-                <textarea id="dish-description" rows="4" placeholder="Escreva uma descrição sobre o prato..."></textarea>
-            </div>
-
-            <div class="modal-actions">
-                <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
-                <button type="submit" class="button-primary">Criar</button>
-            </div>
-        </form>
+                <div class="modal-actions">
+                    <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
+                    <button type="submit" class="button-primary"><span id="dish-modal-submit-text">Criar</span></button>
+                </div>
+            </form>
+        </div>
     </div>
-    </div>
-
+    
     <script src="../../assets/js/main.js"></script>
     <script src="../../assets/js/chef-pratos.js"></script>
 </body>
