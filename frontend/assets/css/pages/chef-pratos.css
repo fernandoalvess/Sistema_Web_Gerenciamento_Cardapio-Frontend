@@ -1,0 +1,123 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #000000;
+}
+
+.search-bar {
+    position: relative;
+    width: 30%;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: none;
+    background-color: #FFC;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.search-bar input::placeholder { color: #9CA3AF; }
+.search-bar input:focus { outline: 2px solid #FFC72C; }
+
+.search-bar img {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+}
+
+/* Grid para os Cards de Pratos */
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+/* Card de Prato */
+.dish-card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dish-card-header, .dish-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tag-category {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #000000;
+}
+
+.tag-entrada { background-color: #FFC72C; }
+.tag-principal { background-color: #FFC72C; }
+.tag-sobremesa { background-color: #FFC72C; }
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+.icon-btn img { width: 18px; }
+
+.dish-card-body {
+    margin: 16px 0;
+    flex-grow: 1;
+}
+
+.dish-card-body h2 {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.dish-card-body p {
+    font-size: 14px;
+    color: #3F3F3F;
+    line-height: 1.5;
+}
+
+.tag-privacy {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.tag-privado {
+    background-color: #FEE2E2;
+    color: #B91C1C;
+}
+
+.tag-publico {
+    background-color: #D1FAE5;
+    color: #065F46;
+}
+
+.created-by {
+    font-size: 12px;
+    color: #6B7280;
+}
