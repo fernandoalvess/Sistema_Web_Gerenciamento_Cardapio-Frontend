@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // SIMULAÇÃO
+    // SIMULAÇÃO E TESTE
     const dishesDatabase = {
         "1": {
             nome: "Bruschetta Italiana",
@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Botões que abrem o modal
     const openCreateDishBtn = document.getElementById('open-create-dish-modal');
     const editDishBtns = document.querySelectorAll('.edit-btn');
+
+    const deleteDishModal = document.getElementById('delete-dish-modal');
+    const confirmDeleteDishBtn = document.getElementById('confirm-delete-dish-btn');
 
     // Prepara o modal para o modo "CRIAR"
     function setupCreateMode() {
@@ -74,6 +77,17 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (dishFormModal) {
                 dishFormModal.classList.add('hidden');
+            }
+        });
+    }
+    
+    // Para o excluir prato
+    if (confirmDeleteDishBtn) {
+        confirmDeleteDishBtn.addEventListener('click', function() {
+            alert('Prato excluído (simulação)!');
+
+            if (deleteDishModal) {
+                deleteDishModal.classList.add('hidden');
             }
         });
     }
