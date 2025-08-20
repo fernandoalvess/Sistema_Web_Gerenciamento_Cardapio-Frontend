@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes</title>
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/pages/admin-ajustes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="inicio.html"><img src="../../assets/images/icons/grid.svg" alt="Ícone de Início"> <span>Início</span></a>
+                    </li>
+                    <li>
+                        <a href="perfil.html"><img src="../../assets/images/icons/profile.svg" alt="Ícone de Perfil"> <span>Perfil</span></a>
+                    </li>
+                    <li>
+                        <a href="pratos.html"><img src="../../assets/images/icons/plate.svg" alt="Ícone de Pratos"> <span>Pratos</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../../assets/images/icons/file.svg" alt="Ícone de Cardápio"> <span>Cardápio</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="ajustes.html"><img src="../../assets/images/icons/gear.svg" alt="Ícone de Ajustes"> <span>Ajustes</span></a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout-btn"><img src="../../assets/images/icons/logout.svg" alt="Ícone de Sair"> <span>Sair</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-card">
+                <header class="settings-header">
+                    <h1>Ajustes</h1>
+                    <p>Fernando Alves</p>
+                </header>
+
+                <ul class="settings-list">
+                    <li class="settings-item">
+                        <a href="perfil.html">
+                            <span>Informações da Conta</span>
+                            <img src="../../assets/images/icons/chevron-right.svg" alt="Ir para">
+                        </a>
+                    </li>
+                    <li class="settings-item">
+                        <a href="#" id="open-change-password-modal">
+                            <span>Alterar Senha</span>
+                            <img src="../../assets/images/icons/chevron-right.svg" alt="Ir para">
+                        </a>
+                    </li>
+                    <li class="settings-item">
+                        <a href="#" id="open-delete-account-modal">
+                            <span>Deletar Conta e Dados</span>
+                            <img src="../../assets/images/icons/chevron-right.svg" alt="Ir para">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <div id="change-password-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <h2 class="fw-extrabold">Alterar senha</h2>
+        <form id="change-password-form">
+            <div class="input-group">
+                <label for="current-password">Senha</label>
+                <div class="password-wrapper">
+                    <input type="password" id="current-password" placeholder="Digite aqui sua senha atual" required>
+                    <img src="../../assets/images/icons/eye-on.svg" class="toggle-password" alt="Mostrar/Esconder senha">
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="new-password">Nova senha</label>
+                <div class="password-wrapper">
+                    <input type="password" id="new-password" placeholder="exemplo: Chef#321" required>
+                    <img src="../../assets/images/icons/eye-off.svg" class="toggle-password" alt="Mostrar/Esconder senha">
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirme a senha</label>
+                <div class="password-wrapper">
+                    <input type="password" id="confirm-password" placeholder="exemplo: Chef#321" required>
+                    <img src="../../assets/images/icons/eye-off.svg" class="toggle-password" alt="Mostrar/Esconder senha">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+                <button type="submit" class="button-primary">Atualizar</button>
+            </div>
+        </form>
+    </div>
+    </div>
+
+    <div id="delete-account-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <h2 class="fw-extrabold">Deletar conta</h2>
+        <p>Deseja mesmo realizar esta operação? Ela é irreversível!</p>
+        <div class="modal-actions">
+            <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+            <button type="button" id="confirm-delete-btn" class="button-danger">Confirmar</button>
+        </div>
+    </div>
+    </div>
+
+    <div id="logout-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2 class="fw-extrabold">Sair da conta</h2>
+            <p>Você tem certeza que deseja sair?</p>
+            <div class="modal-actions">
+                <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+                <button type="button" id="confirm-logout-btn" class="button-primary">Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/chef-ajustes.js"></script>
+
+</body>
+</html>

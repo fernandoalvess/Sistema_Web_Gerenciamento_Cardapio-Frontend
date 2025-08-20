@@ -1,0 +1,46 @@
+.settings-header {
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.settings-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 4px;
+}
+
+.settings-header p {
+    font-size: 16px;
+    color: #3F3F3F;
+}
+
+.settings-list {
+    list-style: none;
+}
+
+.settings-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid #3F3F3F80;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.settings-item:first-child a {
+    border-top: 1px solid #3F3F3F80;
+}
+
+.settings-item a:hover {
+    margin: 2px;
+    background-color: #FFFFFF;
+}
+
+.settings-item a img {
+    width: 20px;
+}
