@@ -82,7 +82,14 @@ body {
 }
 
 .button-yellow:hover {
-    background-color: #fcae1e;
+    background-color: #FCAE1E;
+}
+
+a.button-primary,
+a.button-secondary,
+a.button-danger,
+a.button-yellow {
+    text-decoration: none;
 }
 
 /*  Formulários  */
