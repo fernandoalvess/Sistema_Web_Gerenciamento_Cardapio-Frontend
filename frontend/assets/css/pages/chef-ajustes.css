@@ -44,3 +44,37 @@
 .settings-item a img {
     width: 20px;
 }
+
+/* Estilos para o Modal de Aviso */
+.modal-content {
+    position: relative;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.close-modal-btn img {
+    width: 16px;
+}
+
+.notice-content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.notice-text {
+    flex: 1;
+}
+
+.notice-icon {
+    width: 80px;
+    height: 80px;
+}
