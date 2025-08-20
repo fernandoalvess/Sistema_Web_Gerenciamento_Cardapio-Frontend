@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chef - Meus Pratos</title>
+    <title>Pratos</title>
     <link rel="stylesheet" href="../../assets/css/global.css">
     <link rel="stylesheet" href="../../assets/css/pages/chef-pratos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,7 @@
                     <img src="../../assets/images/icons/search.svg" alt="Ícone de busca">
                     <input type="text" placeholder="Pesquisar pelo nome">
                 </div>
-                <button class="button-primary">Criar Prato</button>
+                <button class="button-primary" data-modal-target="create-dish-modal">Criar Prato</button>
             </header>
 
             <div class="dishes-grid">
@@ -85,6 +85,47 @@
         </main>
     </div>
 
+    <div id="create-dish-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <h2 class="fw-extrabold">Criar prato</h2>
+        <form id="create-dish-form">
+            <div class="input-group">
+                <label for="dish-name">Nome do prato</label>
+                <input type="text" id="dish-name" placeholder="Digite aqui o nome">
+            </div>
+
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="dish-category">Categoria</label>
+                    <select id="dish-category">
+                        <option value="entrada">Entrada</option>
+                        <option value="prato-principal">Prato principal</option>
+                        <option value="sobremesa">Sobremesa</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="dish-sharing">Compartilhamento</label>
+                    <select id="dish-sharing">
+                        <option value="publico">Público</option>
+                        <option value="privado">Privado</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="dish-description">Descrição</label>
+                <textarea id="dish-description" rows="4" placeholder="Escreva uma descrição sobre o prato..."></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
+                <button type="submit" class="button-primary">Criar</button>
+            </div>
+        </form>
+    </div>
+    </div>
+
     <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/chef-pratos.js"></script>
 </body>
 </html>

@@ -121,3 +121,13 @@
     font-size: 12px;
     color: #6B7280;
 }
+
+/* select do formulário */
+.form-row {
+    display: flex;
+    gap: 16px; 
+}
+
+.form-row .input-group {
+    flex: 1;
+}

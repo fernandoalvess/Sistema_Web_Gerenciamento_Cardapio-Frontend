@@ -112,6 +112,30 @@ body {
     border-color: #EB2933;
 }
 
+/* Parte de selecionar no formulário */
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    color: #3F3F3F;
+    background-color: #FFFFFF;
+}
+
+.input-group select:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: #EB2933;
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
 /*  Componente de Senha Visível/Oculta  */
 .password-wrapper {
     position: relative;
