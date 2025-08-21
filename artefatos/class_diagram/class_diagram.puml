@@ -1,0 +1,61 @@
+@startuml "Diagrama de Classe"
+
+skinparam ClassAttributeFontSize 12
+skinparam ClassFontSize 14
+skinparam ClassBorderColor black
+skinparam ArrowColor black
+skinparam ArrowFontSize 12
+skinparam ClassBackgroundColor #F5F1A1
+
+class Chefe{
+    - id: Uuid
+    - nome: String
+    - email: String
+    - telefone: String
+    - senha: String
+
+    + cadastrar(nome: String, email: String, telefone: String, senha: String): void
+    + login(email: String, senha: String): void
+    + atualizarPerfil(nome: String, email: String, telefone: String): void
+    + visualizarPerfil(id: Uuid): User
+    + excluirConta(id: Uuid): Boolean
+}
+
+class Prato{
+    - id: Uuid
+    - nome: String
+    - descricao: String
+    - publicada: Boolean
+
+    + cadastrar(nome: String, descricao: String, categoria: Categoria): void
+    + atualizar(nome: String, descricao: String, categoria: Categoria): void
+    + visualizar(id: Uuid): Prato
+    + excluir(id: Uuid): Boolean
+}
+
+enum Categoria{
+    Entrada
+    Prato Principal
+    Sobremesa
+}
+
+class Cardapio{
+    - id: Uuid
+    - criado_em: Date
+    - logo: Image
+
+    + cadastrar(nome: String, logo: Image): void
+    + atualizar(nome: String, logo: Image): void
+    + visualizar(id: Uuid): Cardapio
+    + excluir(id: Uuid): Boolean
+    + adicionarPrato(prato: Prato): void
+    + removerPrato(prato: Prato): void
+
+}
+
+Chefe "1..1"--"0..*" Prato: gerencia >
+Prato -- Categoria
+Chefe "1..1"--"0..*" Cardapio: gerencia >
+Prato "0..*" -right-o "0..*" Cardapio: possui <
+
+@enduml
