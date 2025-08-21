@@ -1,19 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // CONTROLE DOS MODAIS
+    // CONTROLE GERAL DE MODAIS (os que usam data attributes)
     
+    /**
+     * Abre um modal específico.
+     * @param {HTMLElement} modal
+     */
     function openModal(modal) {
         if (modal) modal.classList.remove('hidden');
     }
 
+    /**
+     * Fecha um modal específico.
+     * @param {HTMLElement} modal
+     */
     function closeModal(modal) {
         if (modal) modal.classList.add('hidden');
     }
 
-    // Procura por qualquer botão que tenha o atributo 'data-modal-target' para ABRIR
+    // Procura por elemento que tenha o atributo 'data-modal-target' para ABRIR
     const openModalTriggers = document.querySelectorAll('[data-modal-target]');
     openModalTriggers.forEach(trigger => {
         trigger.addEventListener('click', (event) => {
+            
             if (trigger.tagName === 'A') event.preventDefault();
             
             const modalId = trigger.getAttribute('data-modal-target');
@@ -22,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Procura por qualquer botão que tenha o atributo 'data-modal-close' para FECHAR
+    // Procura por elemento que tenha o atributo 'data-modal-close' para FECHAR
     const closeModalTriggers = document.querySelectorAll('[data-modal-close]');
     closeModalTriggers.forEach(trigger => {
         trigger.addEventListener('click', () => {
@@ -31,17 +40,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Fecha o modal se o usuário clicar fora
+    // Fecha o modal se o usuário clicar fora do modal
     const modalOverlays = document.querySelectorAll('.modal-overlay');
     modalOverlays.forEach(overlay => {
         overlay.addEventListener('click', (event) => {
+            // Garante que o clique foi foraa e não no conteúdo do modal
             if (event.target === overlay) {
                 closeModal(overlay);
             }
         });
     });
 
-    //MOSTRAR/ESCONDER SENHA
+    // CONTROLE GERAL DE MOSTRAR/ESCONDER SENHA
     const togglePasswordIcons = document.querySelectorAll('.toggle-password');
     togglePasswordIcons.forEach(icon => {
         icon.addEventListener('click', function() {
@@ -49,12 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
             input.setAttribute('type', type);
 
+            // Troca a imagemm
             const basePath = this.src.substring(0, this.src.lastIndexOf('/'));
             this.src = type === 'password' ? `${basePath}/eye-off.svg` : `${basePath}/eye-on.svg`;
         });
     });
 
-    // LÓGICA DO SAIR (ação de confirmar)
+    // LÓGICA GERAL DE SAIR (apenas a açãoo de confirmar)
     const confirmLogoutBtn = document.getElementById('confirm-logout-btn');
     if (confirmLogoutBtn) {
         confirmLogoutBtn.addEventListener('click', function() {
