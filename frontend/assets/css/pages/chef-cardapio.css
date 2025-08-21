@@ -1,0 +1,118 @@
+.page-header-condensed {
+    text-align: center;
+    margin-bottom: 16px;
+}
+.page-header-condensed h1 { font-size: 32px; font-weight: 800; margin-bottom: 24px; }
+.page-header-condensed p { font-size: 16px; color: #3F3F3F; }
+
+.builder-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.menu-builder {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    width: 100%;
+}
+
+.category-stepper {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    flex: 1;
+    max-width: 250px;
+}
+.category-stepper label { font-weight: 600; margin-bottom: 16px; display: block; }
+
+.stepper-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.stepper-controls span { font-size: 24px; font-weight: 700; }
+.stepper-btn {
+    background-color: #EB2933;
+    color: #FFFFFF;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Seção do Cardápio Gerado */
+.generated-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 16px;
+}
+.generated-menu-header h2 { font-size: 24px; font-weight: 700; }
+
+.header-actions { display: flex; gap: 16px; }
+.header-actions button { display: flex; align-items: center; gap: 8px; }
+.header-actions button img { width: 16px; }
+.header-actions .button-primary img { filter: brightness(0) invert(1); }
+
+.export-wrapper { position: relative; }
+.export-dropdown {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    width: 120px;
+    overflow: hidden;
+}
+.export-dropdown li a {
+    display: flex;
+    align-items: center; 
+    gap: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #3F3F3F;
+}
+
+.export-dropdown li a img {
+    width: 20px;
+    height: 20px;
+}
+.export-dropdown li a:hover { background-color: #f7f7f7; }
+
+.menu-preview {
+    background-color: #FFFFFF;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+.menu-preview-header { text-align: center; margin-bottom: 32px; }
+.menu-preview-header h1 { font-size: 28px; color: #EB2933;font-weight: 700; }
+.menu-preview-header p { font-size: 14px; color: #6B7280; }
+
+.menu-category { margin-bottom: 32px; }
+.menu-category h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #EB2933;
+}
+
+.menu-item { margin-bottom: 16px; }
+.menu-item h3 { font-size: 16px; font-weight: 600; }
+.menu-item p { font-size: 14px; color: #3F3F3F; line-height: 1.5; }

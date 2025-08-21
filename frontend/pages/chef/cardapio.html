@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio</title>
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/pages/chef-cardapio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="inicio.html"><img src="../../assets/images/icons/grid.svg" alt="Ícone de Início"> <span>Início</span></a>
+                    </li>
+                    <li>
+                        <a href="perfil.html"><img src="../../assets/images/icons/profile.svg" alt="Ícone de Perfil"> <span>Perfil</span></a>
+                    </li>
+                    <li>
+                        <a href="pratos.html"><img src="../../assets/images/icons/plate.svg" alt="Ícone de Pratos"> <span>Pratos</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="cardapio.html"><img src="../../assets/images/icons/file.svg" alt="Ícone de Cardápio"> <span>Cardápio</span></a>
+                    </li>
+                    <li>
+                        <a href="ajustes.html"><img src="../../assets/images/icons/gear.svg" alt="Ícone de Ajustes"> <span>Ajustes</span></a>
+                    </li>
+                    <li>
+                        <a href="#" data-modal-target="logout-modal"><img src="../../assets/images/icons/logout.svg" alt="Ícone de Sair"> <span>Sair</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="builder-section">
+                <header class="page-header-condensed">
+                    <h1>Monte um novo Cardápio</h1>
+                    <p>Defina a quantidade de pratos que você deseja para cada categoria</p>
+                </header>
+                <div class="menu-builder">
+                    <div class="category-stepper">
+                        <label>Entradas</label>
+                        <div class="stepper-controls">
+                            <button class="stepper-btn" data-action="decrement" data-target="entradas-count">-</button>
+                            <span id="entradas-count">2</span>
+                            <button class="stepper-btn" data-action="increment" data-target="entradas-count">+</button>
+                        </div>
+                    </div>
+                    <div class="category-stepper">
+                        <label>Pratos Principais</label>
+                        <div class="stepper-controls">
+                            <button class="stepper-btn" data-action="decrement" data-target="principais-count">-</button>
+                            <span id="principais-count">3</span>
+                            <button class="stepper-btn" data-action="increment" data-target="principais-count">+</button>
+                        </div>
+                    </div>
+                    <div class="category-stepper">
+                        <label>Sobremesas</label>
+                        <div class="stepper-controls">
+                            <button class="stepper-btn" data-action="decrement" data-target="sobremesas-count">-</button>
+                            <span id="sobremesas-count">2</span>
+                            <button class="stepper-btn" data-action="increment" data-target="sobremesas-count">+</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="button-primary" id="generate-menu-btn">Gerar Cardápio</button>
+            </div>
+
+            <div id="generated-menu-container" class="hidden">
+                <header class="generated-menu-header">
+                    <h2>Cardápio Gerado</h2>
+                    <div class="header-actions">
+                        <button class="button-yellow" id="shuffle-btn">
+                            <img src="../../assets/images/icons/shuffle.svg" alt="Embaralhar">
+                            Embaralhar
+                        </button>
+                        <div class="export-wrapper">
+                            <button class="button-primary" id="export-btn">
+                                <img src="../../assets/images/icons/export.svg" alt="Exportar">
+                                Exportar
+                            </button>
+                            <ul id="export-options" class="export-dropdown hidden">
+                                <li>
+                                    <a href="#">
+                                        <img src="../../assets/images/icons/pdf.svg" alt="Ícone PDF">
+                                        PDF
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="../../assets/images/icons/docx.svg" alt="Ícone DOCX">
+                                        DOCX
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="../../assets/images/icons/latex.svg" alt="Ícone LATEX">
+                                        LATEX
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+                <div id="menu-preview" class="menu-preview">
+                    </div>
+            </div>
+        </main>
+    </div>
+    
+    <div id="logout-modal" class="modal-overlay hidden">
+       <div class="modal-content">
+            <h2 class="fw-extrabold">Sair da conta</h2>
+            <p>Você tem certeza que deseja sair?</p>
+            <div class="modal-actions">
+                <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
+                <button type="button" id="confirm-logout-btn" class="button-primary">Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/chef-cardapio.js"></script>
+</body>
+</html>
