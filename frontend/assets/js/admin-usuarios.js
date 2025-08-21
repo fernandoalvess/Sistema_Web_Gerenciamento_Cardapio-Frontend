@@ -1,46 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const addUserModal = document.getElementById('add-user-modal');
-    const openAddUserModalBtn = document.querySelector('.page-header .button-primary');
+    const addUserForm = document.getElementById('add-user-form');
     const deleteUserModal = document.getElementById('delete-user-modal');
-    const deleteUserBtns = document.querySelectorAll('.delete-btn');
-    const closeModalBtns = document.querySelectorAll('[data-close-modal]');
+    const confirmDeleteBtn = document.querySelector('#delete-user-modal .button-danger');
 
-    function openModal(modal) {
-        if (modal) {
-            modal.classList.remove('hidden');
-        }
+    if (addUserForm) {
+        addUserForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Usuário cadastrado com sucesso (simulação)!');
+            
+            const modal = addUserForm.closest('.modal-overlay');
+            if(modal) modal.classList.add('hidden');
+            addUserForm.reset();
+        });
     }
 
-    function closeModal(modal) {
-        if (modal) {
-            modal.classList.add('hidden');
-        }
+    if (confirmDeleteBtn) {
+        confirmDeleteBtn.addEventListener('click', function() {
+            alert('Usuário removido com sucesso (simulação)!');
+
+            if (deleteUserModal) {
+                deleteUserModal.classList.add('hidden');
+            }
+        });
     }
-
-    openAddUserModalBtn.addEventListener('click', function() {
-        openModal(addUserModal);
-    });
-
-    deleteUserBtns.forEach(button => {
-        button.addEventListener('click', function() {
-            openModal(deleteUserModal);
-        });
-    });
-
-    closeModalBtns.forEach(button => {
-        button.addEventListener('click', function() {
-            const modal = this.closest('.modal-overlay');
-            closeModal(modal);
-        });
-    });
-
-    [addUserModal, deleteUserModal].forEach(modal => {
-        if (modal) {
-            modal.addEventListener('click', function(event) {
-                if (event.target === this) {
-                    closeModal(this);
-                }
-            });
-        }
-    });
 });

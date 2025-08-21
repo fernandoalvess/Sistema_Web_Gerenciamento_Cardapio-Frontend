@@ -14,8 +14,6 @@
 
     <div class="dashboard-container">
         <aside class="sidebar">
-            <div class="sidebar-header">
-                </div>
             <nav class="sidebar-nav">
                 <ul>
                     <li class="active">
@@ -28,7 +26,7 @@
                         <a href="ajustes.html"><img src="../../assets/images/icons/gear.svg" alt="Ícone de Ajustes"> <span>Ajustes</span></a>
                     </li>
                     <li>
-                        <a href="#" id="logout-btn"><img src="../../assets/images/icons/logout.svg" alt="Ícone de Sair"> <span>Sair</span></a>
+                        <a href="#" data-modal-target="logout-modal"><img src="../../assets/images/icons/logout.svg" alt="Ícone de Sair"> <span>Sair</span></a>
                     </li>
                 </ul>
             </nav>
@@ -37,7 +35,7 @@
         <main class="main-content">
             <header class="page-header">
                 <h1>Usuários</h1>
-                <button class="button-primary">Cadastrar</button>
+                <button class="button-primary" data-modal-target="add-user-modal">Cadastrar</button>
             </header>
 
             <div class="content-card">
@@ -59,16 +57,13 @@
                         <span class="col-email">lucas.mairon@seudominio.br</span>
                         <span class="col-phone">(41) 98877-6655</span>
                         <span class="col-actions">
-                            <button class="delete-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" id="Trash-2--Streamline-Lucide" height="24" width="24">
-                                <desc>
-                                    Lixeira
-                                </desc>
-                                <path d="M3 6h18" stroke-width="2"></path>
-                                <path d="M19 6v14c0 1 -1 2 -2 2H7c-1 0 -2 -1 -2 -2V6" stroke-width="2"></path>
-                                <path d="M8 6V4c0 -1 1 -2 2 -2h4c1 0 2 1 2 2v2" stroke-width="2"></path>
-                                <path d="m10 11 0 6" stroke-width="2"></path>
-                                <path d="m14 11 0 6" stroke-width="2"></path>
+                            <button class="delete-btn" data-modal-target="delete-user-modal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 6h18" stroke-width="2"></path>
+                                    <path d="M19 6v14c0 1 -1 2 -2 2H7c-1 0 -2 -1 -2 -2V6" stroke-width="2"></path>
+                                    <path d="M8 6V4c0 -1 1 -2 2 -2h4c1 0 2 1 2 2v2" stroke-width="2"></path>
+                                    <path d="m10 11 0 6" stroke-width="2"></path>
+                                    <path d="m14 11 0 6" stroke-width="2"></path>
                                 </svg>
                             </button>
                         </span>
@@ -80,31 +75,29 @@
             </div>
         </main>
     </div>
-    </main>
-    </div>
 
     <div id="add-user-modal" class="modal-overlay hidden">
         <div class="modal-content">
-            <h2>Cadastrar usuário</h2>
+            <h2 class="fw-extrabold">Cadastrar usuário</h2>
             <form id="add-user-form">
                 <div class="input-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" placeholder="Digite o nome completo" required>
+                    <label for="add-nome">Nome</label>
+                    <input type="text" id="add-nome" placeholder="Digite o nome completo" required>
                 </div>
                 <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="exemplo@email.com" required>
+                    <label for="add-email">Email</label>
+                    <input type="email" id="add-email" placeholder="exemplo@email.com" required>
                 </div>
                 <div class="input-group">
-                    <label for="telefone">Telefone</label>
-                    <input type="tel" id="telefone" placeholder="exemplo: (99) 99999-9999" required>
+                    <label for="add-telefone">Telefone</label>
+                    <input type="tel" id="add-telefone" placeholder="exemplo: (99) 99999-9999" required>
                 </div>
                 <div class="input-group">
-                    <label for="senha">Senha Temporária</label>
-                    <input type="text" id="senha" placeholder="exemplo: Chef#321" required>
+                    <label for="add-senha">Senha Temporária</label>
+                    <input type="text" id="add-senha" placeholder="exemplo: Chef#321" required>
                 </div>
                 <div class="modal-actions">
-                    <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+                    <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
                     <button type="submit" class="button-primary">Cadastrar</button>
                 </div>
             </form>
@@ -113,10 +106,10 @@
 
     <div id="delete-user-modal" class="modal-overlay hidden">
         <div class="modal-content">
-            <h2>Remover usuário</h2>
+            <h2 class="fw-extrabold">Remover usuário</h2>
             <p>Deseja mesmo realizar esta operação? Ela é irreversível!</p>
             <div class="modal-actions">
-                <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+                <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
                 <button type="button" class="button-danger">Remover</button>
             </div>
         </div>
@@ -127,7 +120,7 @@
             <h2 class="fw-extrabold">Sair da conta</h2>
             <p>Você tem certeza que deseja sair?</p>
             <div class="modal-actions">
-                <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+                <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
                 <button type="button" id="confirm-logout-btn" class="button-primary">Sair</button>
             </div>
         </div>
@@ -135,5 +128,5 @@
 
     <script src="../../assets/js/main.js"></script>
     <script src="../../assets/js/admin-usuarios.js"></script>
-</body>
+    </body>
 </html>
