@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const changePasswordModal = document.getElementById('change-password-modal');
+    
     const deleteAccountModal = document.getElementById('delete-account-modal');
     const successNoticeModal = document.getElementById('success-notice-modal'); 
-    const openChangePasswordBtn = document.querySelector('[data-modal-target="change-password-modal"]');
-    const openDeleteAccountBtn = document.querySelector('[data-modal-target="delete-account-modal"]');
     const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
 
     // Lógica de Abrir/Fechar 
@@ -21,9 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', function() {
             closeModal(deleteAccountModal);
-            
-            console.log('Solicitação de exclusão enviada para o backend...');
-            
+                      
             // Abre o modal de aviso
             openModal(successNoticeModal);
         });
