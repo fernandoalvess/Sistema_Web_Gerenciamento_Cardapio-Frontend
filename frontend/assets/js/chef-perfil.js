@@ -1,59 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const editProfileModal = document.getElementById('edit-profile-modal');
-    const openEditProfileBtn = document.getElementById('open-edit-profile-btn');
+
+    const openEditProfileBtn = document.querySelector('[data-modal-target="edit-profile-modal"]');
+    const editForm = document.getElementById('edit-profile-form');
     
-    const closeModalBtns = document.querySelectorAll('[data-close-modal]');
-
-    const formNome = document.getElementById('edit-nome');
-    const formEmail = document.getElementById('edit-email');
-    const formTelefone = document.getElementById('edit-telefone');
-
-    // DADOS FICTÍCIOS (simulando o que vai vir do back)
-    const currentUser = {
-        nome: "Fernando Umbilino Alves",
-        email: "exemplo@gmail.com",
-        telefone: "(88) 94002-8922"
-    };
-
-    // Função para preencher
     function populateEditForm() {
+        const formNome = document.getElementById('edit-nome');
+        const formEmail = document.getElementById('edit-email');
+        const formTelefone = document.getElementById('edit-telefone');
+
+        // DADOS FICTÍCIOS (simulando)
+        const currentUser = {
+            nome: "Lucas Mairon Oliveira Camilo",
+            email: "lucas.mairon@seudominio.br",
+            telefone: "(41) 98877-6655"
+        };
         formNome.value = currentUser.nome;
         formEmail.value = currentUser.email;
         formTelefone.value = currentUser.telefone;
     }
 
-    function openModal(modal) {
-        if (modal) modal.classList.remove('hidden');
+    if (openEditProfileBtn) {
+        openEditProfileBtn.addEventListener('click', populateEditForm);
     }
-
-    function closeModal(modal) {
-        if (modal) modal.classList.add('hidden');
-    }
-
-    openEditProfileBtn.addEventListener('click', function() {
-        populateEditForm();
-        openModal(editProfileModal); 
-    });
-
-    closeModalBtns.forEach(button => {
-        button.addEventListener('click', function() {
-            const modal = this.closest('.modal-overlay');
-            closeModal(modal);
+    
+    // Lógica para o envio do formulário (simulando)
+    if(editForm) {
+        editForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            alert('Dados atualizados (simulação)!');
+            
+            const modal = editForm.closest('.modal-overlay');
+            if(modal) modal.classList.add('hidden');
         });
-    });
-
-    // Fecha o modal se o usuário clicar fora
-    editProfileModal.addEventListener('click', function(event) {
-        if (event.target === this) {
-            closeModal(this);
-        }
-    });
-
-    // Lógica para o envio do formulário (por enquanto, apenas previne o recarregamento)
-    const editForm = document.getElementById('edit-profile-form');
-    editForm.addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        alert('Dados atualizados (simulação)!'); 
-        closeModal(editProfileModal);
-    });
+    }
 });

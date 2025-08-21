@@ -14,7 +14,6 @@
 
     <div class="dashboard-container">
         <aside class="sidebar">
-            <div class="sidebar-header"></div>
             <nav class="sidebar-nav">
                 <ul>
                     <li>
@@ -46,7 +45,7 @@
                         <h1>Perfil</h1>
                         <p>Olá, Sr. Lucas!</p>
                     </div>
-                    <button class="button-primary" id="open-edit-profile-btn">
+                    <button class="button-primary" data-modal-target="edit-profile-modal">
                         <img src="../../assets/images/icons/edit.svg" alt="Ícone de editar">
                         Editar Perfil
                     </button>
@@ -87,10 +86,21 @@
                     <input type="tel" id="edit-telefone" required>
                 </div>
                 <div class="modal-actions">
-                    <button type="button" class="button-secondary" data-close-modal>Cancelar</button>
+                    <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
                     <button type="submit" class="button-primary">Atualizar</button>
                 </div>
             </form>
+        </div>
+    </div>
+    
+    <div id="logout-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2 class="fw-extrabold">Sair da conta</h2>
+            <p>Você tem certeza que deseja sair?</p>
+            <div class="modal-actions">
+                <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
+                <button type="button" id="confirm-logout-btn" class="button-primary">Sair</button>
+            </div>
         </div>
     </div>
     
