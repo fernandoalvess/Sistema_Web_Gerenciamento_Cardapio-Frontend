@@ -240,6 +240,8 @@ a.button-yellow {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 500px;
+    position: relative;
+
 }
 
 .modal-content h2 {
@@ -259,4 +261,19 @@ a.button-yellow {
     justify-content: space-between;
     gap: 16px;
     margin-top: 32px;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 0;
+}
+
+.close-modal-btn img {
+    width: 16px;
 }

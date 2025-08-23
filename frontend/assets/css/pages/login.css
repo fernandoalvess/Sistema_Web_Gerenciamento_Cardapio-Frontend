@@ -113,3 +113,19 @@
     font-size: 14px;
     font-weight: 400;
 }
+
+/* Estilos para o Modal "Esqueceu a Senha" */
+.modal-header-centered {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.modal-header-centered p {
+    font-size: 16px;
+    color: #3F3F3F;
+    margin-top: 8px;
+}
+
+.full-width {
+    width: 100%;
+}
