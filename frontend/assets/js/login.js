@@ -21,17 +21,23 @@ window.addEventListener('load', function() {
     typeWriter(textToType, 0);
 });
 
-// Mostrar/Esconder a senha
-const passwordInput = document.getElementById('password');
-const togglePasswordIcon = document.querySelector('.toggle-password');
+// LÓGICA PARA O MODAL "ESQUECEU A SENHA" 
+    const forgotPasswordForm = document.getElementById('forgot-password-form');
+    
+    if (forgotPasswordForm) {
+        forgotPasswordForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o recarregamento da página
 
-togglePasswordIcon.addEventListener('click', function() {
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
+            const email = document.getElementById('recovery-email').value;
+            
+            // Simula o envio
+            alert(`Instruções de recuperação enviadas para ${email} (simulação)!`);
 
-    if (type === 'password') {
-        this.src = 'assets/images/icons/eye-off.svg';
-    } else {
-        this.src = 'assets/images/icons/eye-on.svg';
+            // Limpa o formulário e fecha o modal
+            forgotPasswordForm.reset();
+            const modal = forgotPasswordForm.closest('.modal-overlay');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        });
     }
-});
