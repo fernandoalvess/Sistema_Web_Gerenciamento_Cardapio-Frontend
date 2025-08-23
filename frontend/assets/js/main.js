@@ -78,9 +78,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
             input.setAttribute('type', type);
 
-            // Troca a imagemm
-            const basePath = this.src.substring(0, this.src.lastIndexOf('/'));
-            this.src = type === 'password' ? `${basePath}/eye-off.svg` : `${basePath}/eye-on.svg`;
+            // LÓGICA FINAL COM CAMINHOS ABSOLUTOS (começando com /)
+            if (type === 'password') {
+                this.src = '/assets/images/icons/eye-off.svg';
+            } else {
+                this.src = '/assets/images/icons/eye-on.svg';
+            }
         });
     });
 
