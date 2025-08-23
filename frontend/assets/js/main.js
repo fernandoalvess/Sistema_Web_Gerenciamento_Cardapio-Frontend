@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // CONTROLE GERAL DE MODAIS (os que usam data attributes)
+
+    const originalUrl = window.location.href; // Guarda a URL original da página
     
     /**
      * Abre um modal específico.
@@ -22,12 +24,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const openModalTriggers = document.querySelectorAll('[data-modal-target]');
     openModalTriggers.forEach(trigger => {
         trigger.addEventListener('click', (event) => {
-            
             if (trigger.tagName === 'A') event.preventDefault();
             
             const modalId = trigger.getAttribute('data-modal-target');
             const modal = document.getElementById(modalId);
             openModal(modal);
+
+            // NOVA LÓGICA DE URL
+            const newUrlPath = trigger.getAttribute('data-url');
+            if (newUrlPath) {
+                // history.pushState(state, title, url)
+                // Muda a URL na barra do navegador sem recarregar a página
+                history.pushState({ modalId: modalId }, '', newUrlPath);
+            }
         });
     });
 
@@ -37,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
         trigger.addEventListener('click', () => {
             const modal = trigger.closest('.modal-overlay');
             closeModal(modal);
+            // Volta para a URL original da página
+            history.pushState({}, '', originalUrl);
         });
     });
 
@@ -44,11 +55,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalOverlays = document.querySelectorAll('.modal-overlay');
     modalOverlays.forEach(overlay => {
         overlay.addEventListener('click', (event) => {
-            // Garante que o clique foi foraa e não no conteúdo do modal
             if (event.target === overlay) {
                 closeModal(overlay);
+                history.pushState({}, '', originalUrl);
             }
         });
+    });
+
+    // --- NOVA LÓGICA PARA O BOTÃO "VOLTAR" DO NAVEGADOR ---
+    window.addEventListener('popstate', function() {
+        // Se o usuário clicar em "Voltar", a URL vai mudar.
+        // A forma mais simples de lidar com isso é fechar todos os modais abertos.
+        const openModals = document.querySelectorAll('.modal-overlay:not(.hidden)');
+        openModals.forEach(closeModal);
     });
 
     // CONTROLE GERAL DE MOSTRAR/ESCONDER SENHA
