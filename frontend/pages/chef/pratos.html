@@ -45,7 +45,7 @@
                     <img src="/assets/images/icons/search.svg" alt="Ícone de busca">
                     <input type="text" placeholder="Pesquisar pelo nome">
                 </div>
-                <button class="button-primary" id="open-create-dish-modal" data-modal-target="dish-form-modal">Criar Prato</button>
+                <button class="button-primary" id="open-create-dish-modal" data-modal-target="dish-form-modal" data-url="/usuario/criar-prato">Criar Prato</button>
             </header>
 
             <div class="dishes-grid">
@@ -53,10 +53,10 @@
                     <div class="dish-card-header">
                         <span class="tag-category tag-entrada">Entrada</span>
                         <div class="card-actions">
-                            <button class="icon-btn edit-btn" data-dish-id="1" data-modal-target="dish-form-modal">
+                            <button class="icon-btn edit-btn" data-dish-id="1" data-modal-target="dish-form-modal" data-url="/usuario/editar-prato">
                                 <img src="/assets/images/icons/edit.svg" alt="Editar">
                             </button>
-                            <button class="icon-btn" data-modal-target="delete-dish-modal">
+                            <button class="icon-btn" data-modal-target="delete-dish-modal" data-url="/usuario/deletar-prato">
                                 <img src="/assets/images/icons/trash.svg" alt="Deletar">
                             </button>
                         </div>
