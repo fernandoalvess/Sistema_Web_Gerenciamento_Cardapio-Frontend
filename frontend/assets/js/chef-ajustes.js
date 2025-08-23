@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     
+    const changePasswordModal = document.getElementById('change-password-modal');
     const deleteAccountModal = document.getElementById('delete-account-modal');
     const successNoticeModal = document.getElementById('success-notice-modal'); 
     const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+    const changePasswordForm = document.getElementById('change-password-form');
+
+    const originalUrl = window.location.pathname;
 
     // Lógica de Abrir/Fechar 
     function openModal(modal) {
@@ -13,8 +17,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modal) modal.classList.add('hidden');
     }
 
-    // Lógica da exclusão 
+    // Logica do modal de alterar senha 
+    if (changePasswordForm) {
+        changePasswordForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            alert('Senha atualizada (simulação)!'); 
 
+            closeModal(changePasswordModal);
+
+            history.pushState({}, '', originalUrl);
+        });
+    }
+
+    // Lógica da exclusão 
     // "Confirmar" no primeiro modal para deletar a contaa
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', function() {
@@ -22,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
                       
             // Abre o modal de aviso
             openModal(successNoticeModal);
+
+            history.pushState({}, '', originalUrl);
         });
     }
 
