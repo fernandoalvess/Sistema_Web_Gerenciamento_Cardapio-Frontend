@@ -1,6 +1,6 @@
 # 🍽️ Sistema de Gerenciamento de Cardápio
 
-Este projeto é a implementação do **Frontend** de um Sistema Web para o Gerenciamento de Cardápio. A aplicação foi desenvolvida com foco em uma arquitetura de código limpa, reutilizável e escalável, utilizando HTML5, CSS3 e JavaScript.
+Este projeto é a implementação do **Frontend** de um Sistema Web para o Gerenciamento de Cardápio. A aplicação está sendo desenvolvida com foco em uma arquitetura de código limpa, reutilizável e escalável, utilizando HTML5, CSS3 e JavaScript.
 
 ## ✨ Funcionalidades Implementadas
 
