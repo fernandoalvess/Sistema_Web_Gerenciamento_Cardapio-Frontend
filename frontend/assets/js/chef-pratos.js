@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    const originalUrl = window.location.pathname;
+
     const dishFormModal = document.getElementById('dish-form-modal');
     const dishForm = document.getElementById('dish-form');
     const modalTitle = document.getElementById('dish-modal-title');
@@ -78,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (dishFormModal) {
                 dishFormModal.classList.add('hidden');
             }
+
+            history.pushState({}, '', originalUrl);
         });
     }
     
@@ -89,6 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (deleteDishModal) {
                 deleteDishModal.classList.add('hidden');
             }
+
+            history.pushState({}, '', originalUrl);
         });
+
     }
 });
