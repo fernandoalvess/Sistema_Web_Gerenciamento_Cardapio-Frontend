@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const openEditProfileBtn = document.querySelector('[data-modal-target="edit-profile-modal"]');
     const editForm = document.getElementById('edit-profile-form');
+    const originalUrl = window.location.pathname;
+
     
     function populateEditForm() {
         const formNome = document.getElementById('edit-nome');
@@ -31,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const modal = editForm.closest('.modal-overlay');
             if(modal) modal.classList.add('hidden');
+
+            // Muda a URL para a original
+            history.pushState({}, '', originalUrl);
         });
     }
 });
