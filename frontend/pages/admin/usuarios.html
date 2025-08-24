@@ -35,7 +35,7 @@
         <main class="main-content">
             <header class="page-header">
                 <h1>Usuários</h1>
-                <button class="button-primary" data-modal-target="add-user-modal" data-url="/usuario/cadastrar">Cadastrar</button>
+                <a href="/pages/admin/cadastrar-usuario.html" class="button-primary">Cadastrar</a>
             </header>
 
             <div class="content-card">
@@ -74,34 +74,6 @@
                 </div>
             </div>
         </main>
-    </div>
-
-    <div id="add-user-modal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <h2 class="fw-extrabold">Cadastrar usuário</h2>
-            <form id="add-user-form">
-                <div class="input-group">
-                    <label for="add-nome">Nome</label>
-                    <input type="text" id="add-nome" placeholder="Digite o nome completo" required>
-                </div>
-                <div class="input-group">
-                    <label for="add-email">Email</label>
-                    <input type="email" id="add-email" placeholder="exemplo@email.com" required>
-                </div>
-                <div class="input-group">
-                    <label for="add-telefone">Telefone</label>
-                    <input type="tel" id="add-telefone" placeholder="exemplo: (99) 99999-9999" required>
-                </div>
-                <div class="input-group">
-                    <label for="add-senha">Senha Temporária</label>
-                    <input type="text" id="add-senha" placeholder="exemplo: Chef#321" required>
-                </div>
-                <div class="modal-actions">
-                    <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
-                    <button type="submit" class="button-primary">Cadastrar</button>
-                </div>
-            </form>
-        </div>
     </div>
 
     <div id="delete-user-modal" class="modal-overlay hidden">
