@@ -3,46 +3,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const addUserForm = document.getElementById('add-user-form');
     const deleteUserModal = document.getElementById('delete-user-modal');
     const confirmDeleteBtn = document.querySelector('#delete-user-modal .button-danger');
+    
+    // NOVO: Guarda a URL original da página 
     const originalUrl = window.location.pathname;
 
-    // Ação de cadastrar usuário (FETCH)
+    // Ação de cadastrar usuário (simulação)
     if (addUserForm) {
-        addUserForm.addEventListener('submit', async function(event) {
+        addUserForm.addEventListener('submit', function(event) {
             event.preventDefault();
+            alert('Usuário cadastrado com sucesso (simulação)!');
             
-            // Pega os dados do formulário de cadastro
-            const userData = {
-                nome: document.getElementById('add-nome').value,
-                email: document.getElementById('add-email').value,
-                telefone: document.getElementById('add-telefone').value,
-                senha: document.getElementById('add-senha').value
-            };
+            const modal = addUserForm.closest('.modal-overlay');
+            if(modal) modal.classList.add('hidden');
+            addUserForm.reset();
 
-            try {
-                const response = await fetch('http://127.0.0.1:8000/user/singin/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(userData),
-                });
-
-                if (response.ok) {
-                    alert('Usuário cadastrado com sucesso!');
-                    addUserForm.reset();
-                    const modal = addUserForm.closest('.modal-overlay');
-                    if(modal) modal.classList.add('hidden');
-                    history.pushState({}, '', originalUrl);
-                    // window.location.reload(); 
-                } else {
-                    const error = await response.json();
-                    alert(`Erro ao cadastrar: ${error.message || 'Verifique os dados'}`);
-                }
-
-            } catch (error) {
-                alert('Erro de conexão com o servidor.');
-                console.error('Erro:', error);
-            }
+            // Muda a URL para a original
+            history.pushState({}, '', originalUrl);
         });
     }
 
@@ -54,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (deleteUserModal) {
                 deleteUserModal.classList.add('hidden');
             }
+            // Muda a URL para a original
             history.pushState({}, '', originalUrl);
         });
     }
