@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+
+.centered-container {
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.centered-container h1 {
+    margin-bottom: 32px;
+    font-size: 32px;
+}
+
+#reset-password-form .input-group {
+    text-align: left;
+}
+
+#reset-password-form .button-yellow {
+    margin-top: 16px;
+    width: 50%;
+}
