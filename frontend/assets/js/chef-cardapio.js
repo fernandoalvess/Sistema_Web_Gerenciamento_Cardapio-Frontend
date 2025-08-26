@@ -1,36 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // SIMULAÇÃO DE BANCO DE DADOS DE PRATOS
-    const allDishes = [
-        { id: 1, nome: "Bruschetta Italiana", categoria: "entradas", desc: "Pão italiano tostado com tomate, manjericão e azeite extra virgem." },
-        { id: 2, nome: "Salada César", categoria: "entradas", desc: "Alface romana com molho césar, croutons e parmesão." },
-        { id: 3, nome: "Carpaccio de Salmão", categoria: "entradas", desc: "Finas fatias de salmão fresco com alcaparras e molho de mostarda e mel." },
-        { id: 4, nome: "Risotto de Cogumelos", categoria: "principais", desc: "Arroz arbóreo cremoso com cogumelos frescos e parmesão." },
-        { id: 5, nome: "Filet Mignon au Poivre", categoria: "principais", desc: "Medalhão de filé mignon grelhado com molho de pimenta verde." },
-        { id: 6, nome: "Salmão Grelhado com Legumes", categoria: "principais", desc: "Posta de salmão grelhado na manteiga de ervas, servido com legumes." },
-        { id: 7, nome: "Spaghetti Carbonara", categoria: "principais", desc: "Massa italiana com pancetta, queijo pecorino, ovos e pimenta do reino." },
-        { id: 8, nome: "Tiramisù", categoria: "sobremesas", desc: "Sobremesa italiana com camadas de biscoito, café e creme mascarpone." },
-        { id: 9, nome: "Panna Cotta", categoria: "sobremesas", desc: "Doce de creme de leite cozido com calda de frutas vermelhas." },
-    ];
 
     const stepperBtns = document.querySelectorAll('.stepper-btn');
     const generateMenuBtn = document.getElementById('generate-menu-btn');
     const generatedMenuContainer = document.getElementById('generated-menu-container');
-    const menuPreview = document.getElementById('menu-preview');
+    const pdfPreviewFrame = document.getElementById('pdf-preview');
     const shuffleBtn = document.getElementById('shuffle-btn');
     const exportBtn = document.getElementById('export-btn');
     const exportOptions = document.getElementById('export-options');
 
-    // Variável para guardar o cardápio que está sendo exibido na tela
-    let currentMenu = null;
-
-    // LÓGICA DOS (+/-) 
+    // LÓGICA DOS +/-
     stepperBtns.forEach(button => {
         button.addEventListener('click', function() {
             const action = this.dataset.action;
             const targetId = this.dataset.target;
             const input = document.getElementById(targetId);
             let currentValue = parseInt(input.value);
-
             if (action === 'increment') {
                 currentValue++;
             } else if (action === 'decrement' && currentValue > 0) {
@@ -39,99 +23,103 @@ document.addEventListener('DOMContentLoaded', function() {
             input.value = currentValue;
         });
     });
-    
-    // Função para um cardápio do zero
-    function generateAndRenderMenu() {
+
+    // LÓGICA DE GERAÇÃO E RENDERIZAÇÃO  
+    // Função principal que será chaamada ao gerar ou embaralharr
+    async function handleMenuGeneration() {
         const quantities = {
             entradas: parseInt(document.getElementById('entradas-count').value),
             principais: parseInt(document.getElementById('principais-count').value),
             sobremesas: parseInt(document.getElementById('sobremesas-count').value)
         };
 
-        // Guarda o cardápio gerado na variável
-        currentMenu = generateMenu(quantities);
-        renderMenu(currentMenu);
+        // Simulei aqui uma chamada para o backend pedindo o PDF
+        const pdfBase64 = await getMenuFromBackend(quantities);
+        
+        // Renderizando
+        renderPdfPreview(pdfBase64);
         generatedMenuContainer.classList.remove('hidden');
     }
 
-    // Função para embaralhar o cardápio que está na telaa
-    function shuffleAndRenderMenu() {
-        if (!currentMenu) return;
+    // SIMULAÇÃO DA FUNÇÃO QUE CONVERSA COM O BACKEND PARA GERAR O PREVIEW
+    async function getMenuFromBackend(quantities) {
+        console.log("FRONTEND: Pedindo ao backend um PDF com as quantidades:", quantities);
+        // O backend geraria o PDF e me retornaria o Base64.
+        // um exemplo de string Base64 de um PDF para teste.
+        const fakeBase64Response = "JVBERi0xLjcgCiXi48/TIAoxIDAgb2JqIAo8PCAKL1R5cGUgL0NhdGFsb2cgCi9QYWdlcyAyIDAgUiAKL1ZpZXdlclByZWZlcmVuY2VzIDw8IAovRGlyZWN0aW9uIC9MMlIgCj4+IAo+PiAKZW5kb2JqIAoyIDAgb2JqIAo8PCAKL1R5cGUgL1BhZ2VzIAovQ291bnQgMSAKL0tpZHMgWyAzIDAgUiBdIAo+PiAKZW5kb2JqIAozIDAgb2JqIAo8PCAKL1R5cGUgL1BhZ2UgCi9QYXJlbnQgMiAwIFIgCi9SZXNvdXJjZXMgPDwgCi9Gb250IDw8IAovRjEgNCAwIFIgCj4+IAo+PiAKL01lZGlhQm94IFsgMCAwIDYxMiA3OTIgXSAKL0NvbnRlbnRzIDUgMCBSIAo+PiAKZW5kb2JqIAo0IDAgb2JqIAo8PCAKL1R5cGUgL0ZvbnQgCi9TdWJ0eXBlIC9UeXBlMSAKL0Jhc2VGb250IC9IZWx2ZXRpY2EgCj4+IAplbmRvYmogCjUgMCBvYmogCjw8IC9MZW5ndGggNTggPj4gCnN0cmVhbSAKQkQgCi9GMSAyNCBUZiAKNTcgNzAwIFRkIChIZWxsbywgV29ybGQhKSBUaiAKRUQgCmVuZHN0cmVhbSAKZW5kb2JqIAp4cmVmIAowIDYgCjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMDc0IDAwMDAwIG4gCjAwMDAwMDAxMjMgMDAwMDAgbiAKMDAwMDAwMDI3MyAwMDAwMCBuIAowMDAwMDAwMzM0IDAwMDAwIG4gCnRyYWlsZXIgCjw8IC9TaXplIDYgCi9Sb290IDEgMCBSIAo+PiAKc3RhcnR4cmVmIAo0NDYgCiUlRU9GIAo=";
+        console.log("FRONTEND: PDF Base64 recebido (simulação).");
+        return fakeBase64Response;
+    }
 
-        // Embaralha a ordem dos pratos
-        for (const category in currentMenu) {
-            currentMenu[category].sort(() => 0.5 - Math.random());
+    // Função que renderiza o PDF Base64 no iframe
+    function renderPdfPreview(base64String) {
+        if (!base64String) {
+            pdfPreviewFrame.src = "";
+            return;
         }
-
-        // Renderiza o cardápio novo
-        renderMenu(currentMenu);
+        pdfPreviewFrame.src = `data:application/pdf;base64,${base64String}`;
     }
-    
-    // Função auxiliar que sorteia os pratos do "banco de dados"
-    function generateMenu(quantities) {
-        const menu = { entradas: [], principais: [], sobremesas: [] };
-        
-        for (const category in quantities) {
-            const availableDishes = allDishes.filter(dish => dish.categoria === category);
-            const selectedDishes = availableDishes.sort(() => 0.5 - Math.random()).slice(0, quantities[category]);
-            menu[category] = selectedDishes;
+
+
+    // LÓGICA DE EXPORTAÇÃO
+    // SIMULAÇÃO DA FUNÇÃO QUE PEDE UM ARQUIVO ESPECÍFICO PARA O BACKEND
+    async function fetchMenuForExport(format) {
+        console.log(`FRONTEND: Pedindo ao backend o cardápio no formato: ${format}`);
+        // O backend geraria o arquivo e retornaria o Base64 pra mim.
+        if (format === 'pdf') {
+            const base64 = await getMenuFromBackend({}); // Reutilizei a função do preview
+            return { fileName: 'cardapio.pdf', mimeType: 'application/pdf', base64: base64 };
         }
-        return menu;
+        // Para DOCX e LATEX, o backend teria que gerar um Base64 diferente e me enviar.
+        alert(`Exportação para ${format.toUpperCase()} ainda não implementada pelo backend (simulação).`);
+        return null;
     }
 
-    // Função que exibe o cardápio no HTML
-    function renderMenu(menu) {
-        menuPreview.innerHTML = `
-            <div class="menu-preview-header">
-                <h1>Cardápio do Chef</h1>
-                <p>Gerado em: ${new Date().toLocaleDateString('pt-BR')}</p>
-            </div>
-            
-            <div class="menu-category">
-                <h2>Entradas</h2>
-                ${menu.entradas.map(dish => `
-                    <div class="menu-item">
-                        <h3>${dish.nome}</h3>
-                        <p>${dish.desc}</p>
-                    </div>
-                `).join('')}
-            </div>
+    // Função que pega o Base64 e força o download
+    function downloadFileFromBase64(fileName, mimeType, base64) {
+        const byteCharacters = atob(base64);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], {type: mimeType});
 
-            <div class="menu-category">
-                <h2>Pratos Principais</h2>
-                ${menu.principais.map(dish => `
-                    <div class="menu-item">
-                        <h3>${dish.nome}</h3>
-                        <p>${dish.desc}</p>
-                    </div>
-                `).join('')}
-            </div>
-
-            <div class="menu-category">
-                <h2>Sobremesas</h2>
-                ${menu.sobremesas.map(dish => `
-                    <div class="menu-item">
-                        <h3>${dish.nome}</h3>
-                        <p>${dish.desc}</p>
-                    </div>
-                `).join('')}
-            </div>
-        `;
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
-    // O botão de gerar novo cardápio
-    generateMenuBtn.addEventListener('click', generateAndRenderMenu);
-    
-    // O botão de embaralhar
-    shuffleBtn.addEventListener('click', shuffleAndRenderMenu);
+    // EVENT LISTENERS
+    generateMenuBtn.addEventListener('click', handleMenuGeneration);
+    shuffleBtn.addEventListener('click', handleMenuGeneration); // Embaralhar pede um novo PDF para o backend
 
-    // O botão de exportar
     exportBtn.addEventListener('click', function(event) {
+        // Impede que o clique no documento (que fecha o menu) seja ativado
         event.stopPropagation();
+        // Adiciona ou remove a classe 'hidden' para mostrar/esconder o menu
         exportOptions.classList.toggle('hidden');
     });
+    
+    exportOptions.addEventListener('click', async function(event) {
+        event.preventDefault();
+        const target = event.target.closest('a');
+        if (!target) return;
 
-    document.addEventListener('click', function() {
+        const format = target.dataset.format;
+        if (format) {
+            const fileData = await fetchMenuForExport(format);
+            if (fileData) {
+                downloadFileFromBase64(fileData.fileName, fileData.mimeType, fileData.base64);
+            }
+            exportOptions.classList.add('hidden');
+        }
+    });
+
+    document.addEventListener('click', () => {
         if (!exportOptions.classList.contains('hidden')) {
             exportOptions.classList.add('hidden');
         }
