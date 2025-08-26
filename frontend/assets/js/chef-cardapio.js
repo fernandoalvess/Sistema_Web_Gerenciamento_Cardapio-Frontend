@@ -28,24 +28,24 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const action = this.dataset.action;
             const targetId = this.dataset.target;
-            const countSpan = document.getElementById(targetId);
-            let currentValue = parseInt(countSpan.textContent);
+            const input = document.getElementById(targetId);
+            let currentValue = parseInt(input.value);
 
             if (action === 'increment') {
                 currentValue++;
             } else if (action === 'decrement' && currentValue > 0) {
                 currentValue--;
             }
-            countSpan.textContent = currentValue;
+            input.value = currentValue;
         });
     });
     
     // Função para um cardápio do zero
     function generateAndRenderMenu() {
         const quantities = {
-            entradas: parseInt(document.getElementById('entradas-count').textContent),
-            principais: parseInt(document.getElementById('principais-count').textContent),
-            sobremesas: parseInt(document.getElementById('sobremesas-count').textContent)
+            entradas: parseInt(document.getElementById('entradas-count').value),
+            principais: parseInt(document.getElementById('principais-count').value),
+            sobremesas: parseInt(document.getElementById('sobremesas-count').value)
         };
 
         // Guarda o cardápio gerado na variável

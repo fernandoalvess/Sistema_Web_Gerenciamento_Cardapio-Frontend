@@ -50,6 +50,27 @@
     cursor: pointer;
 }
 
+/* Os inputs */
+.stepper-input {
+    font-size: 24px;
+    font-weight: 700;
+    color: #3F3F3F;
+    border: none;
+    background-color: transparent;
+    width: 50px;
+    text-align: center;
+}
+
+.stepper-input::-webkit-outer-spin-button,
+.stepper-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stepper-input[type=number] {
+    -moz-appearance: textfield;
+}
+
 /* Seção do Cardápio Gerado */
 .generated-menu-header {
     display: flex;
