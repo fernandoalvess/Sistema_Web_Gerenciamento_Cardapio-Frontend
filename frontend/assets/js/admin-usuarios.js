@@ -3,15 +3,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const addUserForm = document.getElementById('add-user-form');
     const deleteUserModal = document.getElementById('delete-user-modal');
     const confirmDeleteBtn = document.querySelector('#delete-user-modal .button-danger');
-    const phoneInput = document.getElementById('telefone');
+    const phoneInput = document.getElementById('add-telefone');
     
     //Guarda a URL original da página 
     const originalUrl = window.location.pathname;
 
     // Ação de cadastrar usuário (simulação)
+    let phoneMask;
+    if (phoneInput) {
+        const maskOptions = {
+            mask: '(00) 00000-0000'
+        };
+        phoneMask = IMask(phoneInput, maskOptions);
+    }
+
     if (addUserForm) {
         addUserForm.addEventListener('submit', function(event) {
+            // Captura o envio para que a página não recarregue
             event.preventDefault();
+
+            // Pega o número limpo (sem máscara)
+            const telefoneLimpo = phoneMask ? phoneMask.unmaskedValue : phoneInput.value;
+
+            // simulação de envio
             alert('Usuário cadastrado com sucesso (simulação)!');
             
             const modal = addUserForm.closest('.modal-overlay');
@@ -20,37 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Muda a URL para a original
             history.pushState({}, '', originalUrl);
-        });
-    }
-
-    if (phoneInput) {
-
-        const maskOptions = {
-            mask: '(00) 00000-0000'
-        };
-        const phoneMask = IMask(phoneInput, maskOptions);
-    }
-
-    // O NÚMERO LIMPO PARA O BACKEND
-    const form = document.querySelector('form');
-    
-    if (form) {
-        form.addEventListener('submit', function(event) {
-            // Pega a instância da máscara 
-            const phoneMask = IMask.instances.find(mask => mask.el === phoneInput);
-
-            if (phoneMask) {
-                // Pega apenas os números, sem a formatação
-                const unmaskedValue = phoneMask.unmaskedValue;
-
-                // Cria um campo de input escondido para enviar o número limpo
-                const hiddenInput = document.createElement('input');
-                hiddenInput.type = 'hidden';
-                hiddenInput.name = 'telefone_limpo'; //oq o backend vai receber
-                hiddenInput.value = unmaskedValue;
-
-                form.appendChild(hiddenInput);
-            }
         });
     }
 
