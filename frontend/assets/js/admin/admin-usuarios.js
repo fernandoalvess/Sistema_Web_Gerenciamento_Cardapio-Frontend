@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
             //Pega o ID do usuário do botão que foi clicado
             const userId = this.dataset.userId;
             
-            //Coloca o ID no botão "Remover" de dentro do modal
-            if (confirmDeleteBtn) {
-                confirmDeleteBtn.dataset.userIdToDelete = userId;
+            //Coloca o ID no intup de dentro do modal
+            if (hiddenInputForUserId) {
+                hiddenInputForUserId.value = userId;
             }
         });
     });
@@ -56,13 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
         confirmDeleteBtn.addEventListener('click', function() {
 
             //Pega o ID
-            const userIdToDelete = this.dataset.userIdToDelete;
+            const userIdToDelete = hiddenInputForUserId.value;
 
             alert('Usuário removido com sucesso (simulação)!');
-
-            // Aqui Lucas pode fazr a chamada do back
-            // fetch(`/api/usuario/remover/${userIdToDelete}`, { method: 'DELETE' })
-            //     .then(response => ...);
 
             if (deleteUserModal) {
                 deleteUserModal.classList.add('hidden');
