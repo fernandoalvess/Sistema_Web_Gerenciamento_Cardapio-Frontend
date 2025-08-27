@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
             setTimeout(() => {
                 loader.style.display = 'none';
                 mainContent.classList.remove('hidden');
-            }, 1000);
+            }, 100);
         }
     }
 
