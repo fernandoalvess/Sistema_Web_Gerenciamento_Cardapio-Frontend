@@ -37,10 +37,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    //Pega o ID depois de clicar
+    const allDeleteButtons = document.querySelectorAll('.delete-btn');
+    allDeleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            //Pega o ID do usuário do botão que foi clicado
+            const userId = this.dataset.userId;
+            
+            //Coloca o ID no botão "Remover" de dentro do modal
+            if (confirmDeleteBtn) {
+                confirmDeleteBtn.dataset.userIdToDelete = userId;
+            }
+        });
+    });
+
     // Ação de remover usuário (simulação)
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', function() {
+
+            //Pega o ID
+            const userIdToDelete = this.dataset.userIdToDelete;
+
             alert('Usuário removido com sucesso (simulação)!');
+
+            // Aqui Lucas pode fazr a chamada do back
+            // fetch(`/api/usuario/remover/${userIdToDelete}`, { method: 'DELETE' })
+            //     .then(response => ...);
 
             if (deleteUserModal) {
                 deleteUserModal.classList.add('hidden');
