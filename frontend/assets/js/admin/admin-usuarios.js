@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const deleteUserModal = document.getElementById('delete-user-modal');
     const confirmDeleteBtn = document.querySelector('#delete-user-modal .button-danger');
     const phoneInput = document.getElementById('add-telefone');
+    const hiddenInputForUserId = document.getElementById('user-id-to-delete');
     
     //Guarda a URL original da página 
     const originalUrl = window.location.pathname;
