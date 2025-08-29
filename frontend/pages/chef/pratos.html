@@ -90,8 +90,8 @@
 
     <div id="dish-form-modal" class="modal-overlay hidden">
         <div class="modal-content">
+            <form id="dish-form" method="POST">
             <h2 class="fw-extrabold" id="dish-modal-title">Criar prato</h2>
-            <form id="dish-form">
                 <div class="input-group">
                     <label for="dish-name">Nome do prato</label>
                     <input type="text" id="dish-name" placeholder="Digite aqui o nome">
@@ -127,12 +127,14 @@
 
     <div id="delete-dish-modal" class="modal-overlay hidden">
         <div class="modal-content">
+            <form id="delete-dish-form" method="POST">
             <h2 class="fw-extrabold">Excluir prato</h2>
             <p>Deseja mesmo realizar esta operação? Ela é irreversível!</p>
             <div class="modal-actions">
                 <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
                 <button type="button" id="confirm-delete-dish-btn" class="button-danger">Excluir</button>
             </div>
+            </form>
         </div>
     </div>
 
