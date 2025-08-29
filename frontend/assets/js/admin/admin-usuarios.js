@@ -1,15 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const addUserForm = document.getElementById('add-user-form');
-    const deleteUserModal = document.getElementById('delete-user-modal');
-    const confirmDeleteBtn = document.querySelector('#delete-user-modal .button-danger');
     const phoneInput = document.getElementById('add-telefone');
-    const hiddenInputForUserId = document.getElementById('user-id-to-delete');
     
-    //Guarda a URL original da página 
-    const originalUrl = window.location.pathname;
-
-    // Ação de cadastrar usuário (simulação)
     let phoneMask;
     if (phoneInput) {
         const maskOptions = {
@@ -18,54 +10,19 @@ document.addEventListener('DOMContentLoaded', function() {
         phoneMask = IMask(phoneInput, maskOptions);
     }
 
-    if (addUserForm) {
-        addUserForm.addEventListener('submit', function(event) {
-            // Captura o envio para que a página não recarregue
-            event.preventDefault();
+    const deleteUserForm = document.getElementById('delete-user-form');
 
-            // Pega o número limpo (sem máscara)
-            const telefoneLimpo = phoneMask ? phoneMask.unmaskedValue : phoneInput.value;
-
-            // simulação de envio
-            alert('Usuário cadastrado com sucesso (simulação)!');
-            
-            const modal = addUserForm.closest('.modal-overlay');
-            if(modal) modal.classList.add('hidden');
-            addUserForm.reset();
-
-            // Muda a URL para a original
-            history.pushState({}, '', originalUrl);
-        });
-    }
-
-    //Pega o ID depois de clicar
     const allDeleteButtons = document.querySelectorAll('.delete-btn');
     allDeleteButtons.forEach(button => {
         button.addEventListener('click', function() {
-            //Pega o ID do usuário do botão que foi clicado
+
             const userId = this.dataset.userId;
             
-            //Coloca o ID no intup de dentro do modal
-            if (hiddenInputForUserId) {
-                hiddenInputForUserId.value = userId;
+            const actionUrl = `/usuarios/remover/${userId}/`; // <- LUCAS, AJUSTE AQUI PARA TESTAR SE DELETA
+
+            if (deleteUserForm) {
+                deleteUserForm.setAttribute('action', actionUrl);
             }
         });
     });
-
-    // Ação de remover usuário (simulação)
-    if (confirmDeleteBtn) {
-        confirmDeleteBtn.addEventListener('click', function() {
-
-            //Pega o ID
-            const userIdToDelete = hiddenInputForUserId.value;
-
-            alert('Usuário removido com sucesso (simulação)!');
-
-            if (deleteUserModal) {
-                deleteUserModal.classList.add('hidden');
-            }
-            // Muda a URL para a original
-            history.pushState({}, '', originalUrl);
-        });
-    }
 });

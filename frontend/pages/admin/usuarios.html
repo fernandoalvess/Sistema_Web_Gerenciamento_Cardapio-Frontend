@@ -107,11 +107,9 @@
 
     <div id="delete-user-modal" class="modal-overlay hidden">
         <div class="modal-content">
-            <form id="delete-user-form">
+            <form id="delete-user-form" method="POST">
             <h2 class="fw-extrabold">Remover usuário</h2>
             <p>Deseja mesmo realizar esta operação? Ela é irreversível!</p>
-
-            <input type="hidden" id="user-id-to-delete" name="userId">
 
             <div class="modal-actions">
                 <button type="button" class="button-secondary" data-modal-close>Cancelar</button>
