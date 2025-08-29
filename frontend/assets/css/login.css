@@ -1,9 +1,7 @@
-/* Classe para esconder elementos */
 .hidden {
     display: none;
 }
 
-/* Estilos da Tela de Login */
 #main-content {
     display: flex;
     width: 100%;
@@ -57,7 +55,6 @@
     font-weight: 400;
 }
 
-/* Estilos para o Modal "Esqueceu a Senha" */
 .modal-header-centered {
     text-align: center;
     margin-bottom: 24px;

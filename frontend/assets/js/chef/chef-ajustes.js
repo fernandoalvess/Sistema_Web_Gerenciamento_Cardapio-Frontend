@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const originalUrl = window.location.pathname;
 
-    // Lógica de Abrir/Fechar 
     function openModal(modal) {
         if (modal) modal.classList.remove('hidden');
     }
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modal) modal.classList.add('hidden');
     }
 
-    // Logica do modal de alterar senha 
     if (changePasswordForm) {
         changePasswordForm.addEventListener('submit', function(event) {
             event.preventDefault(); 
@@ -29,20 +27,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Lógica da exclusão 
-    // "Confirmar" no primeiro modal para deletar a contaa
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', function() {
             closeModal(deleteAccountModal);
                       
-            // Abre o modal de aviso
             openModal(successNoticeModal);
 
             history.pushState({}, '', originalUrl);
         });
     }
 
-    // fechamento do segundo modal (Aviso)
     if (successNoticeModal) {
         const closeNoticeTriggers = successNoticeModal.querySelectorAll('[data-close-modal], .close-modal-btn');
         

@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const formEmail = document.getElementById('edit-email');
         const formTelefone = document.getElementById('edit-telefone');
 
-        // DADOS FICTÍCIOS (simulando)
         const currentUser = {
             nome: "Lucas Mairon Oliveira Camilo",
             email: "lucas.mairon@seudominio.br",
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         openEditProfileBtn.addEventListener('click', populateEditForm);
     }
     
-    // Lógica para o envio do formulário (simulando)
     if(editForm) {
         editForm.addEventListener('submit', function(event) {
             event.preventDefault(); 
@@ -34,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const modal = editForm.closest('.modal-overlay');
             if(modal) modal.classList.add('hidden');
 
-            // Muda a URL para a original
             history.pushState({}, '', originalUrl);
         });
     }

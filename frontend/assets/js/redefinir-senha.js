@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            //Simulação de envio para o backend
             alert('Senha redefinida com sucesso (simulação)!');
 
             window.location.href = '/index.html';

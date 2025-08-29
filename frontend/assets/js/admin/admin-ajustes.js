@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const originalUrl = window.location.pathname;
 
-    // Ação de deletar a conta (simulando)
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', function() {
             
@@ -17,12 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 deleteAccountModal.classList.add('hidden');
             }
 
-            // Reverte a URL após a ação
             history.pushState({}, '', originalUrl);
         });
     }
 
-    // Lógica para o envio do formulário de alterar senha (aviso)
     if (changePasswordForm) {
         changePasswordForm.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -31,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const modal = changePasswordForm.closest('.modal-overlay');
             if(modal) modal.classList.add('hidden');
 
-            // Reverte a URL para a original
             history.pushState({}, '', originalUrl);
         });
     }

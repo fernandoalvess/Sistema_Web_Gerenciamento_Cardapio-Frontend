@@ -50,7 +50,6 @@
     cursor: pointer;
 }
 
-/* Os inputs */
 .stepper-input {
     font-size: 24px;
     font-weight: 700;
@@ -71,7 +70,6 @@
     -moz-appearance: textfield;
 }
 
-/* Seção do Cardápio Gerado */
 .generated-menu-header {
     display: flex;
     justify-content: space-between;

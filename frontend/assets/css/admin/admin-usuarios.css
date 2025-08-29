@@ -45,7 +45,6 @@
     width: 20px;
 }
 
-/* Lista de Usuários */
 .list-header, .user-row {
     display: flex;
     align-items: center;

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // SIMULAÇÃO E TESTE
     const dishesDatabase = {
         "1": {
             nome: "Bruschetta Italiana",
@@ -16,14 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalTitle = document.getElementById('dish-modal-title');
     const modalSubmitText = document.getElementById('dish-modal-submit-text');
 
-    // Botões que abrem o modal
     const openCreateDishBtn = document.getElementById('open-create-dish-modal');
     const editDishBtns = document.querySelectorAll('.edit-btn');
 
     const deleteDishModal = document.getElementById('delete-dish-modal');
     const confirmDeleteDishBtn = document.getElementById('confirm-delete-dish-btn');
 
-    // Prepara o modal para o modo "CRIAR"
     function setupCreateMode() {
         dishForm.reset();
         modalTitle.textContent = "Criar prato";
@@ -32,12 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
         dishForm.dataset.dishId = '';
     }
 
-    // Prepara o modal para o modo "EDITAR"
     function setupEditMode(dishId) {
         const dishData = dishesDatabase[dishId];
         if (!dishData) return;
 
-        // Preenche o formulário
         document.getElementById('dish-name').value = dishData.nome;
         document.getElementById('dish-category').value = dishData.categoria;
         document.getElementById('dish-sharing').value = dishData.compartilhamento;
@@ -49,12 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
         dishForm.dataset.dishId = dishId;
     }
 
-    // Para o botão "Criar Prato"
     if (openCreateDishBtn) {
         openCreateDishBtn.addEventListener('click', setupCreateMode);
     }
 
-    // Para todos os botões de "Editar"
     editDishBtns.forEach(button => {
         button.addEventListener('click', function() {
             const dishId = this.dataset.dishId;
@@ -62,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Para o envio do formulário
     if (dishForm) {
         dishForm.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -70,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const mode = this.dataset.mode;
             const dishId = this.dataset.dishId;
 
-            // Simulação de envio para o backend
             if (mode === 'create') {
                 alert('Prato criado (simulação)!');
             } else if (mode === 'edit') {
@@ -85,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Para o excluir prato
     if (confirmDeleteDishBtn) {
         confirmDeleteDishBtn.addEventListener('click', function() {
             alert('Prato excluído (simulação)!');

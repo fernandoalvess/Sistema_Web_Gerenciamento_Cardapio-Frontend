@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         openEditProfileBtn.addEventListener('click', populateEditForm);
     }
     
-    // Lógica para o envio do formulário (simulando)
     if(editForm) {
         editForm.addEventListener('submit', function(event) {
             event.preventDefault(); 

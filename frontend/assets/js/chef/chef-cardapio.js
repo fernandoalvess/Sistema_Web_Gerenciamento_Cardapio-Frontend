@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const exportBtn = document.getElementById('export-btn');
     const exportOptions = document.getElementById('export-options');
 
-    // LÓGICA DOS +/-
     stepperBtns.forEach(button => {
         button.addEventListener('click', function() {
             const action = this.dataset.action;
@@ -61,21 +60,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    // LÓGICA DE EXPORTAÇÃO
-    // SIMULAÇÃO DA FUNÇÃO QUE PEDE UM ARQUIVO ESPECÍFICO PARA O BACKEND
     async function fetchMenuForExport(format) {
         console.log(`FRONTEND: Pedindo ao backend o cardápio no formato: ${format}`);
-        // O backend geraria o arquivo e retornaria o Base64 pra mim.
         if (format === 'pdf') {
             const base64 = await getMenuFromBackend({}); // Reutilizei a função do preview
             return { fileName: 'cardapio.pdf', mimeType: 'application/pdf', base64: base64 };
         }
-        // Para DOCX e LATEX, o backend teria que gerar um Base64 diferente e me enviar.
         alert(`Exportação para ${format.toUpperCase()} ainda não implementada pelo backend (simulação).`);
         return null;
     }
 
-    // Função que pega o Base64 e força o download
     function downloadFileFromBase64(fileName, mimeType, base64) {
         const byteCharacters = atob(base64);
         const byteNumbers = new Array(byteCharacters.length);
@@ -93,14 +87,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.removeChild(link);
     }
 
-    // EVENT LISTENERS
     generateMenuBtn.addEventListener('click', handleMenuGeneration);
-    shuffleBtn.addEventListener('click', handleMenuGeneration); // Embaralhar pede um novo PDF para o backend
+    shuffleBtn.addEventListener('click', handleMenuGeneration); 
 
     exportBtn.addEventListener('click', function(event) {
-        // Impede que o clique no documento (que fecha o menu) seja ativado
         event.stopPropagation();
-        // Adiciona ou remove a classe 'hidden' para mostrar/esconder o menu
         exportOptions.classList.toggle('hidden');
     });
     
