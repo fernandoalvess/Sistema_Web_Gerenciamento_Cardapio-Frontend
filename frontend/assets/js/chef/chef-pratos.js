@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     editDishBtns.forEach(button => {
         button.addEventListener('click', function() {
-            const dishId = this.dataset.dishId;
+            const actionUrl = this.dataset.url;
             const dishData = dishesDatabase[dishId];
             if (!dishData) return;
 
@@ -41,14 +41,18 @@ document.addEventListener('DOMContentLoaded', function() {
             modalTitle.textContent = "Editar prato";
             modalSubmitText.textContent = "Atualizar";
 
-            dishForm.setAttribute('action', `/usuario/editar-prato/${dishId}/`);
+            if (dishForm && actionUrl) {
+                dishForm.setAttribute('action', actionUrl);
+            }
         });
     });
 
     deleteDishBtns.forEach(button => {
         button.addEventListener('click', function() {
-            const dishId = this.dataset.dishId;
-            deleteDishForm.setAttribute('action', `/usuario/deletar-prato/${dishId}/`);
+            const actionUrl = this.dataset.url;
+            if (deleteDishForm && actionUrl) {
+                deleteDishForm.setAttribute('action', actionUrl);
+            }
         });
     });
 });
