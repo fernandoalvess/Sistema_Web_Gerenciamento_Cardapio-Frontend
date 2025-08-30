@@ -23,8 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // LÓGICA DE GERAÇÃO E RENDERIZAÇÃO  
-    // Função principal que será chaamada ao gerar ou embaralharr
     async function handleMenuGeneration() {
         const quantities = {
             entradas: parseInt(document.getElementById('entradas-count').value),
@@ -32,25 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
             sobremesas: parseInt(document.getElementById('sobremesas-count').value)
         };
 
-        // Simulei aqui uma chamada para o backend pedindo o PDF
         const pdfBase64 = await getMenuFromBackend(quantities);
         
-        // Renderizando
         renderPdfPreview(pdfBase64);
-        generatedMenuContainer.classList.remove('hidden');
     }
 
-    // SIMULAÇÃO DA FUNÇÃO QUE CONVERSA COM O BACKEND PARA GERAR O PREVIEW
     async function getMenuFromBackend(quantities) {
         console.log("FRONTEND: Pedindo ao backend um PDF com as quantidades:", quantities);
-        // O backend geraria o PDF e me retornaria o Base64.
-        // um exemplo de string Base64 de um PDF para teste.
         const fakeBase64Response = "JVBERi0xLjcgCiXi48/TIAoxIDAgb2JqIAo8PCAKL1R5cGUgL0NhdGFsb2cgCi9QYWdlcyAyIDAgUiAKL1ZpZXdlclByZWZlcmVuY2VzIDw8IAovRGlyZWN0aW9uIC9MMlIgCj4+IAo+PiAKZW5kb2JqIAoyIDAgb2JqIAo8PCAKL1R5cGUgL1BhZ2VzIAovQ291bnQgMSAKL0tpZHMgWyAzIDAgUiBdIAo+PiAKZW5kb2JqIAozIDAgb2JqIAo8PCAKL1R5cGUgL1BhZ2UgCi9QYXJlbnQgMiAwIFIgCi9SZXNvdXJjZXMgPDwgCi9Gb250IDw8IAovRjEgNCAwIFIgCj4+IAo+PiAKL01lZGlhQm94IFsgMCAwIDYxMiA3OTIgXSAKL0NvbnRlbnRzIDUgMCBSIAo+PiAKZW5kb2JqIAo0IDAgb2JqIAo8PCAKL1R5cGUgL0ZvbnQgCi9TdWJ0eXBlIC9UeXBlMSAKL0Jhc2VGb250IC9IZWx2ZXRpY2EgCj4+IAplbmRvYmogCjUgMCBvYmogCjw8IC9MZW5ndGggNTggPj4gCnN0cmVhbSAKQkQgCi9GMSAyNCBUZiAKNTcgNzAwIFRkIChIZWxsbywgV29ybGQhKSBUaiAKRUQgCmVuZHN0cmVhbSAKZW5kb2JqIAp4cmVmIAowIDYgCjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwMDc0IDAwMDAwIG4gCjAwMDAwMDAxMjMgMDAwMDAgbiAKMDAwMDAwMDI3MyAwMDAwMCBuIAowMDAwMDAwMzM0IDAwMDAwIG4gCnRyYWlsZXIgCjw8IC9TaXplIDYgCi9Sb290IDEgMCBSIAo+PiAKc3RhcnR4cmVmIAo0NDYgCiUlRU9GIAo=";
         console.log("FRONTEND: PDF Base64 recebido (simulação).");
         return fakeBase64Response;
     }
 
-    // Função que renderiza o PDF Base64 no iframe
     function renderPdfPreview(base64String) {
         if (!base64String) {
             pdfPreviewFrame.src = "";
@@ -63,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function fetchMenuForExport(format) {
         console.log(`FRONTEND: Pedindo ao backend o cardápio no formato: ${format}`);
         if (format === 'pdf') {
-            const base64 = await getMenuFromBackend({}); // Reutilizei a função do preview
+            const base64 = await getMenuFromBackend({}); 
             return { fileName: 'cardapio.pdf', mimeType: 'application/pdf', base64: base64 };
         }
         alert(`Exportação para ${format.toUpperCase()} ainda não implementada pelo backend (simulação).`);
