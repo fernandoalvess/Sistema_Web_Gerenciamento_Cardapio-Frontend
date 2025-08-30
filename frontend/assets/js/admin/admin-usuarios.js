@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const userId = this.dataset.userId;
             
-            const actionUrl = `/usuarios/remover/${userId}/`; // <- LUCAS, AJUSTE AQUI PARA TESTAR SE DELETA
+            const actionUrl = `/usuarios/remover/${userId}/`;
 
             if (deleteUserForm) {
                 deleteUserForm.setAttribute('action', actionUrl);
