@@ -2,14 +2,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const openEditProfileBtn = document.querySelector('[data-modal-target="edit-profile-modal"]');
     const editForm = document.getElementById('edit-profile-form');
+    const formNome = document.getElementById('edit-nome');
+    const formEmail = document.getElementById('edit-email');
+    const formTelefone = document.getElementById('edit-telefone');
     const originalUrl = window.location.pathname;
+
+    let phoneMask;
+    if (formTelefone) {
+        const maskOptions = {
+            mask: '(00) 00000-0000'
+        };
+        phoneMask = IMask(formTelefone, maskOptions);
+    }
     
     function populateEditForm() {
-        const formNome = document.getElementById('edit-nome');
-        const formEmail = document.getElementById('edit-email');
-        const formTelefone = document.getElementById('edit-telefone');
-
-        // DADOS FICTÍCIOS (simulando)
         const currentUser = {
             nome: "Fernando Umbilino Alves",
             email: "exemplo@gmail.com",
@@ -17,7 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         formNome.value = currentUser.nome;
         formEmail.value = currentUser.email;
-        formTelefone.value = currentUser.telefone;
+
+        if (phoneMask) {
+            phoneMask.unmaskedValue = currentUser.telefone;
+        } else {
+            formTelefone.value = currentUser.telefone;
+        }
     }
 
     if (openEditProfileBtn) {
