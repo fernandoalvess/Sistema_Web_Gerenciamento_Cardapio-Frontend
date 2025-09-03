@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const dishForm = document.getElementById('dish-form');
+    const editDishForm = document.getElementById('edit-dish-form');
     const deleteDishForm = document.getElementById('delete-dish-form');
     
     const modalTitle = document.getElementById('dish-modal-title');
@@ -30,20 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
     editDishBtns.forEach(button => {
         button.addEventListener('click', function() {
             const actionUrl = this.dataset.url;
+            const dishId = this.dataset.dishId;
             const dishData = dishesDatabase[dishId];
             if (!dishData) return;
 
-            document.getElementById('dish-name').value = dishData.nome;
-            document.getElementById('dish-category').value = dishData.categoria;
-            document.getElementById('dish-sharing').value = dishData.compartilhamento;
-            document.getElementById('dish-description').value = dishData.descricao;
+            document.getElementById('edit-dish-name').value = dishData.nome;
+            document.getElementById('edit-dish-category').value = dishData.categoria;
+            document.getElementById('edit-dish-sharing').value = dishData.compartilhamento;
+            document.getElementById('edit-dish-description').value = dishData.descricao;
 
-            modalTitle.textContent = "Editar prato";
-            modalSubmitText.textContent = "Atualizar";
 
-            if (dishForm && actionUrl) {
-                dishForm.setAttribute('action', actionUrl);
+            if (editDishForm && actionUrl) {
+                editDishForm.setAttribute('action', actionUrl);
             }
+
         });
     });
 
